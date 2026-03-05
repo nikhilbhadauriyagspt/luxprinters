@@ -177,290 +177,334 @@ export default function Header() {
     <>
       <header 
         className={cn(
-          "fixed top-0 left-0 w-full z-[100] transition-all duration-500 font-urbanist py-2 bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+          "fixed top-0 left-0 w-full z-[100] transition-all duration-300 font-urbanist bg-white border-b border-slate-200 shadow-sm"
         )}
       >
-        <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-12 relative">
-          <div className="flex items-center justify-between gap-4">
+        {/* --- TOP ROW: LOGO, SEARCH, ACTIONS --- */}
+        <div className="border-b border-slate-100 py-3">
+          <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-12 flex items-center justify-between gap-8">
             
-            {/* --- LEFT: NAV & TRUST --- */}
-            <div className="flex-1 flex items-center justify-start gap-10">
-              <nav className="hidden xl:flex items-center gap-1 p-1 bg-slate-100/50 backdrop-blur-md rounded-full border border-slate-200/50 shadow-inner h-12">
-                {[
-                  { name: 'Home', path: '/', icon: <Home size={14} /> },
-                  { name: 'Store', path: '/shop' },
-                  { name: 'About', path: '/about' },
-                  { name: 'Contact', path: '/contact' },
-                  { name: 'FAQ', path: '/faq' }
-                ].map((link) => {
-                  const isActive = location.pathname === link.path;
-                  return (
-                    <Link 
-                      key={link.name} 
-                      to={link.path} 
-                      className={cn(
-                        "px-5 py-2 h-full text-[11px] font-bold tracking-[0.15em] uppercase transition-all duration-300 rounded-full flex items-center gap-2 group relative",
-                        isActive 
-                          ? "bg-white text-blue-600 shadow-sm" 
-                          : "text-slate-500 hover:text-slate-900 hover:bg-white/50"
-                      )}
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                })}
-              </nav>
-
-              {/* HP PREMIUM TRUST BADGE */}
-              <div className="hidden min-[1450px]:flex items-center gap-4 px-5 h-12 bg-gradient-to-r from-slate-50 to-white border border-slate-200 rounded-full shadow-sm hover:shadow-md transition-all duration-500 group/hp cursor-default shrink-0 ml-auto">
-                 <div className="relative">
-                    <div className="h-7 w-7 bg-white p-1 flex items-center justify-center rounded-lg shadow-inner border border-slate-100 group-hover/hp:border-blue-300 transition-colors duration-500">
-                       <img src="/brands/hp.png" alt="HP" className="w-full h-full object-contain" />
-                    </div>
-                    <div className="absolute -top-1 -right-1 h-2 w-2 bg-blue-500 rounded-full border-2 border-white animate-pulse" />
-                 </div>
-                 <div className="flex flex-col leading-tight">
-                    <span className="text-[7px] font-black text-blue-600 uppercase tracking-[0.2em] mb-0.5">Verified</span>
-                    <span className="text-[11px] font-black text-slate-900 uppercase tracking-tight">HP Partner</span>
-                 </div>
+            {/* LOGO & SUBSIDIARY - HORIZONTAL */}
+            <div className="flex items-center gap-6">
+              <Link to="/" className="block">
+                <img src="/logo/MYPRINTERMAN.png" alt="MYPRINTERMAN" className="h-14 w-auto object-contain" />
+              </Link>
+              <div className="hidden sm:flex flex-col justify-center border-l border-slate-200 pl-6 h-12">
+                <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">A Subsidiary of</span>
+                <span className="text-[10px] font-black text-slate-900 uppercase tracking-tight mt-0.5">PrimeFix Solutions</span>
               </div>
             </div>
 
-            {/* --- CENTER: LOGO & PRIME FIX (FLOATING PENDANT) --- */}
-            <div className="flex-shrink-0 relative group/pendant mt-2 mx-12">
-              <div className={cn(
-                "absolute top-[-50px] left-1/2 -translate-x-1/2 w-[125%] h-[190%] bg-white rounded-b-[4.5rem] shadow-[0_25px_50px_rgba(0,0,0,0.08)] border-x border-b border-slate-100 transition-all duration-700",
-                "group-hover/pendant:h-[200%] group-hover/pendant:shadow-[0_30px_60px_rgba(37,99,235,0.12)] group-hover/pendant:border-blue-100"
-              )} />
-              
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-blue-400/10 blur-[70px] rounded-full opacity-0 group-hover/pendant:opacity-100 transition-opacity duration-700" />
+            {/* CENTER SEARCH WITH SUGGESTIONS */}
+            <div className="hidden lg:flex flex-1 max-w-2xl relative group/search">
+               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within/search:text-blue-600 transition-colors" size={18} />
+               <input 
+                 type="text" 
+                 placeholder="Search premium inventory..."
+                 value={searchQuery}
+                 onChange={(e) => setSearchQuery(e.target.value)}
+                 onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
+                 className="w-full h-12 pl-12 pr-4 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-50 transition-all"
+               />
 
-              <Link to="/" className="relative flex items-center gap-6 px-8 pt-4 pb-3 mt-1">
-                <div className="relative">
-                  <img 
-                    src="/logo/EASYMYPRINT.png" 
-                    alt="EASYMYPRINT" 
-                    className="h-9 lg:h-12 w-auto object-contain transition-all duration-700 group-hover/pendant:scale-110 group-hover/pendant:rotate-[-2deg]" 
-                  />
-                </div>
-                
-                <div className="h-12 w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent hidden sm:block" />
-                
-                <div className="hidden sm:flex flex-col justify-center leading-none">
-                  <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">A Subsidiary of</span>
-                  <span className="text-[11px] font-black text-slate-900 uppercase tracking-tight mt-1">PrimeFix Solutions</span>
-                </div>
-              </Link>
+               {/* INLINE SUGGESTIONS DROPDOWN */}
+               <AnimatePresence>
+                 {searchQuery.trim().length > 0 && (
+                   <motion.div 
+                     initial={{ opacity: 0, y: 10 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     exit={{ opacity: 0, y: 10 }}
+                     className="absolute top-full left-0 w-full mt-2 bg-white border border-slate-200 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] overflow-hidden z-[110]"
+                   >
+                     {isSearching ? (
+                       <div className="p-8 flex flex-col items-center gap-3">
+                          <Loader2 size={24} className="animate-spin text-blue-600" />
+                          <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Searching Inventory...</span>
+                       </div>
+                     ) : (
+                       <div className="max-h-[450px] overflow-y-auto custom-scrollbar p-2">
+                         {suggestions.categories.length > 0 && (
+                           <div className="mb-4">
+                             <p className="text-[9px] font-black text-blue-600 uppercase tracking-[0.3em] px-4 py-3 border-b border-slate-50">Departments</p>
+                             <div className="grid grid-cols-2 gap-1 p-1">
+                               {suggestions.categories.map(cat => (
+                                 <Link 
+                                   key={cat.id} to={`/shop?category=${cat.slug}`} onClick={() => setSearchQuery('')}
+                                   className="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl transition-all group"
+                                 >
+                                   <span className="text-[11px] font-black text-slate-900 uppercase">{cat.name}</span>
+                                   <ChevronRight size={12} className="text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                                 </Link>
+                               ))}
+                             </div>
+                           </div>
+                         )}
+
+                         <div>
+                           <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] px-4 py-3 border-b border-slate-50">Products</p>
+                           <div className="space-y-1 p-1">
+                             {suggestions.products.length > 0 ? suggestions.products.map((p) => (
+                               <Link 
+                                 key={p.id} to={`/product/${p.slug}`} onClick={() => { setSearchQuery(''); saveSearch(searchQuery); }}
+                                 className="flex items-center gap-4 p-3 hover:bg-slate-50 rounded-xl transition-all group"
+                               >
+                                 <div className="h-10 w-10 bg-white border border-slate-100 rounded-lg flex items-center justify-center p-1.5 shadow-sm">
+                                   <img src={p.images ? `${(typeof p.images === 'string' ? JSON.parse(p.images)[0] : p.images[0])}` : ''} className="max-w-full max-h-full object-contain" alt="" />
+                                 </div>
+                                 <div className="flex-1 min-w-0">
+                                   <p className="text-[11px] font-black text-slate-900 uppercase truncate group-hover:text-blue-600">{p.name}</p>
+                                   <p className="text-[10px] font-bold text-blue-600 mt-0.5">${p.price}</p>
+                                 </div>
+                                 <ArrowRight size={14} className="text-slate-200 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                               </Link>
+                             )) : (
+                               <div className="p-8 text-center">
+                                  <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest italic">No matches found</p>
+                               </div>
+                             )}
+                           </div>
+                         </div>
+                         
+                         {suggestions.products.length > 0 && (
+                           <button 
+                             onClick={handleSearch} 
+                             className="w-full mt-2 py-4 bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.3em] hover:bg-blue-600 transition-all rounded-xl"
+                           >
+                             View All Results
+                           </button>
+                         )}
+                       </div>
+                     )}
+                   </motion.div>
+                 )}
+               </AnimatePresence>
             </div>
 
-            {/* --- RIGHT: ACTIONS (REFINED PREMIUM HUB) --- */}
-            <div className="flex-1 flex items-center justify-end gap-10">
-              
-              {/* DEPARTMENTS - SYMMETRICAL TO HP BADGE */}
-              <button 
-                onMouseEnter={() => setActiveDropdown('categories')}
-                className={cn(
-                  "hidden lg:flex items-center gap-2.5 px-6 h-12 rounded-full transition-all duration-500 text-[11px] font-black tracking-[0.15em] uppercase border-2 group/dept relative overflow-hidden mr-auto",
-                  activeDropdown === 'categories' 
-                    ? "bg-slate-900 border-slate-900 text-white shadow-lg" 
-                    : "bg-white border-slate-100 text-slate-900 hover:border-blue-600 hover:text-blue-600 shadow-sm"
-                )}
-              >
-                 <LayoutGrid size={14} className={cn("transition-transform duration-500", activeDropdown === 'categories' ? "rotate-90" : "group-hover/dept:rotate-12")} />
-                 <span>Departments</span>
-              </button>
+            {/* ACTIONS & HP BADGE */}
+            <div className="flex items-center gap-3">
+              <div className="hidden min-[1200px]:flex items-center gap-3 px-4 py-2 bg-slate-50 border border-slate-200 rounded-none mr-2">
+                 <div className="h-10 w-10 flex items-center justify-center p-2 bg-white border border-slate-100">
+                    <img src="/brands/hp.png" alt="HP" className="w-full h-full object-contain" />
+                 </div>
+                 <div className="flex flex-col">
+                    <span className="text-[10px] font-black text-slate-900 uppercase leading-none">Authorized HP Partner</span>
+                 </div>
+              </div>
 
-              <div className="flex items-center gap-3 bg-slate-100/50 backdrop-blur-md p-1.5 rounded-full border border-slate-200/50 shadow-inner">
-                
-                {/* INLINE SEARCH */}
-                <div className="hidden lg:flex items-center relative group/search min-w-[180px] xl:min-w-[240px]">
-                   <Search className="absolute left-4 text-slate-400 group-focus-within/search:text-blue-600 transition-colors" size={14} strokeWidth={2.5} />
-                   <input 
-                     type="text" 
-                     placeholder="Quick Search..."
-                     value={searchQuery}
-                     onChange={(e) => setSearchQuery(e.target.value)}
-                     onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
-                     className="w-full h-10 pl-10 pr-4 bg-white/50 border border-slate-200/50 rounded-full text-[11px] font-bold uppercase tracking-widest focus:outline-none focus:bg-white focus:border-blue-600 transition-all"
-                   />
-                </div>
-
-                <div className="hidden sm:block">
-                  <Link to="/wishlist" className="h-10 w-10 flex items-center justify-center rounded-full transition-all relative text-slate-500 hover:bg-white hover:text-red-500 hover:shadow-sm">
-                    <Heart size={18} strokeWidth={2.5} />
-                    {wishlistCount > 0 && (
-                      <span className="absolute top-1 right-1 h-4 w-4 bg-red-600 text-white text-[8px] font-black rounded-full flex items-center justify-center border-2 border-slate-100">{wishlistCount}</span>
-                    )}
-                  </Link>
-                </div>
+              <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl">
+                <Link to="/wishlist" className="h-10 w-10 flex items-center justify-center rounded-lg text-slate-600 hover:bg-white hover:text-red-500 hover:shadow-sm transition-all relative">
+                  <Heart size={20} strokeWidth={2.5} />
+                  {wishlistCount > 0 && (
+                    <span className="absolute -top-1 -right-1 h-5 w-5 bg-red-600 text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white">{wishlistCount}</span>
+                  )}
+                </Link>
 
                 <motion.button 
-                  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={openCartDrawer}
-                  className="h-10 w-10 flex items-center justify-center rounded-full transition-all relative text-slate-500 hover:bg-white hover:text-blue-600 hover:shadow-sm"
+                  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={openCartDrawer}
+                  className="h-10 w-10 flex items-center justify-center rounded-lg text-slate-600 hover:bg-white hover:text-blue-600 hover:shadow-sm transition-all relative"
                 >
-                  <ShoppingBag size={18} strokeWidth={2.5} />
-                  <span className="absolute top-1 right-1 h-4 w-4 bg-slate-900 text-white text-[8px] font-black rounded-full flex items-center justify-center border-2 border-slate-100">{cartCount}</span>
+                  <ShoppingBag size={20} strokeWidth={2.5} />
+                  <span className="absolute -top-1 -right-1 h-5 w-5 bg-slate-900 text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white">{cartCount}</span>
                 </motion.button>
 
-                <div className="h-6 w-px bg-slate-200/50 mx-1" />
+                <div className="h-6 w-px bg-slate-300 mx-1" />
 
                 <div className="relative" onMouseEnter={() => setIsProfileOpen(true)} onMouseLeave={() => setIsProfileOpen(false)}>
                   {user ? (
-                     <motion.div 
-                       whileHover={{ scale: 1.05 }}
-                       className="h-10 w-10 border-2 border-white bg-slate-900 text-white flex items-center justify-center text-[11px] font-black cursor-pointer rounded-full shadow-md overflow-hidden"
-                     >
-                       {(user.name || 'U').charAt(0).toUpperCase()}
-                     </motion.div>
+                     <div className="h-10 w-10 bg-slate-900 text-white flex items-center justify-center text-xs font-black cursor-pointer rounded-lg shadow-md uppercase">
+                       {(user.name || 'U').charAt(0)}
+                     </div>
                   ) : (
-                    <Link to="/login" className="h-10 w-10 flex items-center justify-center rounded-full text-slate-500 hover:bg-slate-900 hover:text-white hover:shadow-md transition-all">
-                      <User size={18} strokeWidth={2.5} />
+                    <Link to="/login" className="h-10 w-10 flex items-center justify-center rounded-lg text-slate-600 hover:bg-slate-900 hover:text-white transition-all">
+                      <User size={20} strokeWidth={2.5} />
                     </Link>
                   )}
 
                   <AnimatePresence>
                     {isProfileOpen && user && (
                       <motion.div 
-                        initial={{ opacity: 0, y: 15, scale: 0.95 }} 
-                        animate={{ opacity: 1, y: 0, scale: 1 }} 
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className="absolute top-full right-0 mt-3 w-64 bg-white/95 border border-slate-200 p-3 z-[110] rounded-[2rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] backdrop-blur-xl"
+                        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full right-0 mt-2 w-56 bg-white border border-slate-200 p-2 z-[110] rounded-2xl shadow-xl"
                       >
-                        <div className="px-5 py-4 bg-slate-50 rounded-[1.5rem] mb-2 border border-slate-100">
-                          <p className="text-[8px] font-black text-blue-600 uppercase tracking-widest mb-1">Authenticated Session</p>
-                          <p className="text-sm font-black text-slate-900 truncate">{user.name}</p>
+                        <div className="px-4 py-3 bg-slate-50 rounded-xl mb-1">
+                          <p className="text-xs font-black text-slate-900 truncate">{user.name}</p>
                         </div>
-                        <div className="p-1 space-y-1">
-                          <Link to="/profile" className="flex items-center gap-3 px-4 py-3 text-[10px] font-bold text-slate-500 hover:text-blue-600 hover:bg-blue-50 transition-all uppercase tracking-widest rounded-xl"><User size={14} /> Profile Hub</Link>
-                          <Link to="/orders" className="flex items-center gap-3 px-4 py-3 text-[10px] font-bold text-slate-500 hover:text-blue-600 hover:bg-blue-50 transition-all uppercase tracking-widest rounded-xl"><Package size={14} /> My Logistics</Link>
-                          <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-3 text-[10px] font-bold text-red-500 hover:bg-red-50 transition-all uppercase tracking-widest rounded-xl mt-1 border-t border-slate-50 pt-2"><LogOut size={14} /> Disconnect</button>
-                        </div>
+                        <Link to="/profile" className="flex items-center gap-3 px-4 py-2.5 text-xs font-bold text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"><User size={14} /> Profile</Link>
+                        <Link to="/orders" className="flex items-center gap-3 px-4 py-2.5 text-xs font-bold text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"><Package size={14} /> Orders</Link>
+                        <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-2.5 text-xs font-bold text-red-500 hover:bg-red-50 rounded-lg transition-all mt-1 border-t border-slate-100 pt-2"><LogOut size={14} /> Logout</button>
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
-
-                <button 
-                  onClick={() => setIsSidebarOpen(true)}
-                  className="xl:hidden h-10 w-10 flex items-center justify-center bg-slate-900 text-white rounded-full ml-1 active:scale-95 shadow-lg shadow-slate-900/20"
-                >
-                  <LayoutGrid size={18} />
-                </button>
               </div>
+
+              <button 
+                onClick={() => setIsSidebarOpen(true)}
+                className="lg:hidden h-10 w-10 flex items-center justify-center bg-slate-900 text-white rounded-lg active:scale-95 transition-transform"
+              >
+                <LayoutGrid size={20} />
+              </button>
             </div>
           </div>
         </div>
 
-        {/* --- COMPACT PROFESSIONAL MEGA MENU --- */}
+        {/* --- BOTTOM ROW: DEPARTMENTS & NAV LINKS --- */}
+        <div className="bg-slate-50/80 backdrop-blur-md">
+          <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-12 flex items-center gap-12 h-14">
+            
+            {/* DEPARTMENTS TOGGLE */}
+            <button 
+              onMouseEnter={() => setActiveDropdown('categories')}
+              className={cn(
+                "flex items-center gap-3 px-6 h-full text-[11px] font-black uppercase tracking-widest transition-all duration-300 border-x border-slate-200 group/dept",
+                activeDropdown === 'categories' ? "bg-white text-blue-600" : "text-slate-900 hover:bg-white"
+              )}
+            >
+               <LayoutGrid size={16} className={cn("transition-transform", activeDropdown === 'categories' && "rotate-90")} />
+               <span>Shop By Departments</span>
+               <ChevronDown size={14} className={cn("ml-2 transition-transform", activeDropdown === 'categories' && "rotate-180")} />
+            </button>
+
+            {/* NAVIGATION LINKS */}
+            <nav className="hidden lg:flex items-center gap-1 h-full">
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'Store', path: '/shop' },
+                { name: 'About', path: '/about' },
+                { name: 'Contact', path: '/contact' },
+                { name: 'FAQ', path: '/faq' }
+              ].map((link) => {
+                const isActive = location.pathname === link.path;
+                return (
+                  <Link 
+                    key={link.name} 
+                    to={link.path} 
+                    className={cn(
+                      "px-6 h-full flex items-center text-[11px] font-black uppercase tracking-widest transition-all relative group",
+                      isActive ? "text-blue-600 bg-white" : "text-slate-500 hover:text-slate-900 hover:bg-white/50"
+                    )}
+                  >
+                    {link.name}
+                    {isActive && <span className="absolute bottom-0 left-0 w-full h-1 bg-blue-600" />}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* QUICK CONTACT REMOVED */}
+            <div className="hidden xl:flex items-center gap-6 ml-auto">
+            </div>
+          </div>
+        </div>
+
+        {/* --- COMPACT FULL-WIDTH MEGA MENU --- */}
         <AnimatePresence>
           {activeDropdown === 'categories' && (
             <motion.div 
               ref={dropdownRef}
-              initial={{ opacity: 0, y: 15, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: 10, filter: "blur(10px)" }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
               onMouseLeave={() => setActiveDropdown(null)}
-              className="absolute top-full left-0 w-full bg-white/80 backdrop-blur-3xl border-b border-slate-200/50 overflow-hidden z-[90] shadow-[0_40px_100px_rgba(0,0,0,0.1)]"
+              className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-200 overflow-hidden z-[90] shadow-2xl"
             >
-              <div className="max-w-[1920px] mx-auto flex min-h-[500px]">
+              <div className="max-w-[1920px] mx-auto flex min-h-[400px]">
                 
-                {/* 01: Sidebar - Modern Glass */}
-                <div className="w-[320px] border-r border-slate-200/50 p-10 bg-slate-50/50">
-                  <div className="flex items-center gap-3 mb-10">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-                    <p className="text-[10px] font-black text-slate-900 uppercase tracking-[0.4em]">Inventory</p>
-                  </div>
-                  <div className="space-y-2">
+                {/* 01: CATEGORY NAVIGATION (LEFT SIDEBAR) */}
+                <div className="w-[300px] border-r border-slate-100 p-6 bg-slate-50/50">
+                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6 px-2">Categories</p>
+                  
+                  <div className="space-y-1">
                     {categories.map(parent => (
                       <motion.div 
                         key={parent.id}
                         onMouseEnter={() => setHoveredParent(parent.id)}
                         className={cn(
-                          "group flex items-center justify-between p-4 rounded-2xl cursor-pointer transition-all duration-500 border border-transparent",
+                          "group flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all duration-300",
                           String(hoveredParent) === String(parent.id) 
-                            ? "bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)] text-blue-600 border-slate-100" 
-                            : "text-slate-500 hover:text-slate-900 hover:bg-white/50"
+                            ? "bg-white shadow-sm text-blue-600 ring-1 ring-slate-200" 
+                            : "text-slate-500 hover:text-slate-900 hover:bg-white/60"
                         )}
                       >
                         <div className="flex items-center gap-4">
                            <div className={cn(
-                             "h-10 w-10 rounded-xl flex items-center justify-center transition-all duration-500 shadow-sm border",
+                             "h-9 w-9 rounded-lg flex items-center justify-center transition-all duration-300",
                              String(hoveredParent) === String(parent.id) 
-                               ? "bg-slate-900 border-slate-900 text-white" 
-                               : "bg-white border-slate-100 text-slate-400 group-hover:text-slate-900"
+                               ? "bg-slate-900 text-white" 
+                               : "bg-slate-100 text-slate-400"
                            )}>
-                              {parent.name.toLowerCase().includes('printer') ? <Monitor size={18} /> : <Cpu size={18} />}
+                              {parent.name.toLowerCase().includes('printer') ? <Monitor size={16} /> : <Cpu size={16} />}
                            </div>
-                           <span className="text-[13px] font-bold uppercase tracking-tight">{parent.name}</span>
+                           <span className="text-[12px] font-black uppercase tracking-tight">{parent.name}</span>
                         </div>
-                        <ChevronRight size={14} className={cn("transition-all duration-500", String(hoveredParent) === String(parent.id) ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0")} />
+                        <ChevronRight size={14} className={cn("transition-all", String(hoveredParent) === String(parent.id) ? "opacity-100" : "opacity-0")} />
                       </motion.div>
                     ))}
                   </div>
                 </div>
 
-                {/* 02: Content Grid - Clean & Spacious */}
-                <div className="flex-1 p-16 bg-white/40">
-                  <div className="flex items-end justify-between mb-12">
-                     <div>
-                        <div className="flex items-center gap-2 mb-2">
-                           <span className="h-px w-8 bg-blue-600" />
-                           <span className="text-[9px] font-black text-blue-600 uppercase tracking-[0.3em]">Authorized Collection</span>
-                        </div>
-                        <h4 className="text-5xl font-black text-slate-900 uppercase tracking-tighter">{activeParent?.name || 'Storefront'}</h4>
-                     </div>
-                     <Link to={`/shop?category=${activeParent?.slug}`} onClick={() => setActiveDropdown(null)} className="h-14 px-10 rounded-2xl bg-slate-900 text-white hover:bg-blue-600 transition-all duration-500 text-[11px] font-black uppercase tracking-widest flex items-center gap-3 shadow-2xl shadow-black/10">
-                        View Complete Range <ArrowRight size={16} />
+                {/* 02: SUBCATEGORY GRID (CENTER CONTENT) */}
+                <div className="flex-1 p-10 bg-white">
+                  <div className="flex items-center justify-between mb-8 border-b border-slate-50 pb-6">
+                     <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tighter">
+                       {activeParent?.name || 'Selection'}
+                     </h4>
+                     <Link 
+                       to={`/shop?category=${activeParent?.slug}`} 
+                       onClick={() => setActiveDropdown(null)}
+                       className="text-[10px] font-black text-blue-600 uppercase tracking-widest hover:underline"
+                     >
+                       Browse All Products
                      </Link>
                   </div>
 
                   <div className="grid grid-cols-3 gap-4">
-                    {subCategoriesToDisplay.map((sub) => (
+                    {subCategoriesToDisplay.length > 0 ? subCategoriesToDisplay.map((sub) => (
                       <Link 
                         key={sub.id}
                         to={`/shop?category=${sub.slug}`}
                         onClick={() => setActiveDropdown(null)}
-                        className="group p-8 rounded-[2rem] bg-white border border-slate-100 hover:border-blue-200 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-700 flex items-center gap-6"
+                        className="group p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all duration-300 flex items-center gap-4"
                       >
-                        <div className="h-14 w-14 rounded-2xl bg-slate-50 text-slate-400 flex items-center justify-center transition-all duration-500 group-hover:bg-blue-50 group-hover:text-blue-600 group-hover:scale-110">
-                           <ShoppingBasket size={24} />
+                        <div className="h-10 w-10 rounded-lg bg-white text-slate-400 flex items-center justify-center shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all">
+                           <ShoppingBasket size={18} />
                         </div>
-                        <div>
-                           <span className="text-[16px] font-black text-slate-900 block leading-none mb-1.5 uppercase tracking-tight group-hover:text-blue-600 transition-colors">{sub.name}</span>
-                           <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Explore Series</span>
-                        </div>
+                        <span className="text-[13px] font-black text-slate-900 uppercase tracking-tight group-hover:text-blue-600">{sub.name}</span>
                       </Link>
-                    ))}
+                    )) : (
+                      <div className="col-span-full flex flex-col items-center justify-center py-12 bg-slate-50/50 rounded-2xl border border-dashed border-slate-200">
+                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">No Sub-departments found</p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                {/* 03: Feature Nodes - Refined */}
-                <div className="w-[340px] p-12 border-l border-slate-200/50 bg-slate-50/30 flex flex-col gap-10">
-                   <div className="space-y-6">
-                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] px-2">Partner Brands</p>
-                      <div className="grid grid-cols-2 gap-2">
-                        {brands.map(brand => (
-                          <Link 
-                            key={brand.id} to={`/shop?brand=${encodeURIComponent(brand.name)}`} onClick={() => setActiveDropdown(null)}
-                            className="px-4 py-4 bg-white border border-slate-100 text-[10px] font-bold text-slate-600 hover:text-blue-600 hover:border-blue-600 hover:shadow-lg transition-all rounded-2xl text-center uppercase tracking-tight"
-                          >
-                            {brand.name}
-                          </Link>
-                        ))}
-                      </div>
+                {/* 03: BRAND SPOTLIGHT (RIGHT SECTION) */}
+                <div className="w-[300px] p-10 bg-slate-50 border-l border-slate-100">
+                   <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Partner Ecosystem</p>
+                   <div className="grid grid-cols-2 gap-2">
+                     {brands.slice(0, 8).map(brand => (
+                       <Link 
+                         key={brand.id} 
+                         to={`/shop?brand=${encodeURIComponent(brand.name)}`} 
+                         onClick={() => setActiveDropdown(null)}
+                         className="p-3 bg-white border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition-all rounded-xl text-center"
+                       >
+                         <span className="text-[9px] font-black uppercase tracking-tight">{brand.name}</span>
+                       </Link>
+                     ))}
                    </div>
 
-                   <div className="mt-auto p-8 rounded-[2.5rem] bg-slate-900 text-white relative overflow-hidden group/cta shadow-2xl shadow-black/20">
-                      <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <Sparkles size={60} />
-                      </div>
-                      <div className="relative z-10">
-                        <p className="text-[9px] font-black text-blue-400 uppercase tracking-[0.3em] mb-4">New Arrivals</p>
-                        <h4 className="text-xl font-black text-white uppercase tracking-tighter leading-tight mb-6">Pro Configuration<br/>Series 2024</h4>
-                        <Link to="/shop" onClick={() => setActiveDropdown(null)} className="inline-flex items-center gap-3 text-[10px] font-black text-white uppercase tracking-[0.2em] group-hover:gap-5 transition-all">
-                           BROWSE NOW <ArrowRight size={14} className="text-blue-400" />
-                        </Link>
-                      </div>
+                   <div className="mt-8 p-6 rounded-2xl bg-slate-900 text-white">
+                      <p className="text-[8px] font-black text-blue-400 uppercase tracking-[0.2em] mb-2">Pro Solutions</p>
+                      <h4 className="text-lg font-black uppercase tracking-tighter mb-4">Need Advice?</h4>
+                      <Link 
+                        to="/contact" 
+                        onClick={() => setActiveDropdown(null)}
+                        className="block w-full text-center py-2.5 bg-blue-600 text-white rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-700 transition-all"
+                      >
+                        Contact Experts
+                      </Link>
                    </div>
                 </div>
 
@@ -603,7 +647,7 @@ export default function Header() {
             >
               <div className="p-8 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
                 <Link to="/" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-4">
-                  <img src="/logo/EASYMYPRINT.png" alt="EASYMYPRINT" className="h-9 w-auto object-contain" />
+                  <img src="/logo/MYPRINTERMAN.png" alt="MYPRINTERMAN" className="h-9 w-auto object-contain" />
                   <div className="h-6 w-px bg-slate-200" />
                   <div className="flex flex-col justify-center leading-none">
                     <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">A Subsidiary of</span>

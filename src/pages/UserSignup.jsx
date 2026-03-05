@@ -27,13 +27,13 @@ export default function UserSignup() {
       const data = await response.json();
       
       if (data.status === 'success') {
-        alert('Account created successfully! Please sign in.');
+        alert('Account created! Please sign in.');
         navigate('/login');
       } else {
-        setError(data.message || 'Registration protocol failed.');
+        setError(data.message || 'Check your details and try again.');
       }
     } catch (err) {
-      setError('Connection timeout: Unable to reach terminal.');
+      setError('Connection error. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -41,44 +41,33 @@ export default function UserSignup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white font-urbanist px-6 py-20 relative overflow-hidden">
-      {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-blue-50/50 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[30%] h-[30%] bg-slate-100/50 blur-[100px] rounded-full pointer-events-none" />
       
       <div className="max-w-md w-full relative z-10">
         
-        {/* --- BRAND HEADER --- */}
-        <div className="text-center mb-12">
-          <Link to="/" className="inline-block mb-10 transition-transform hover:scale-105 group">
-            <div className="flex items-center gap-4">
-              <img src="/logo/EASYMYPRINT.png" alt="EASYMYPRINT" className="h-10 w-auto object-contain" />
-              <div className="h-8 w-px bg-slate-200" />
-              <div className="flex flex-col items-start leading-none">
-                <span className="text-[8px] font-black text-slate-400 uppercase tracking-widest">A Subsidiary of</span>
-                <span className="text-[11px] font-black text-slate-900 uppercase tracking-tight mt-1">PrimeFix Solutions</span>
-              </div>
-            </div>
+        <div className="text-center mb-12 flex flex-col items-center">
+          <Link to="/" className="mb-12">
+            <img src="/logo/MYPRINTERMAN.png" alt="MyPrinterMan" className="h-14 w-auto object-contain" />
           </Link>
+          
           <div className="flex items-center justify-center gap-2 mb-6">
              <span className="h-[1px] w-6 bg-blue-600 animate-pulse" />
-             <span className="text-[9px] font-black text-blue-600 uppercase tracking-[0.4em]">Establish Account</span>
+             <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.4em]">Establish Account</span>
           </div>
-          <h1 className="text-4xl font-black text-slate-900 uppercase tracking-tighter mb-2 leading-none">Join the Elite.</h1>
-          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Register for professional access</p>
+          
+          <h1 className="text-5xl md:text-6xl font-black text-slate-900 leading-[0.85] tracking-tight flex flex-col">
+            <span className="capitalize">Join Our</span>
+            <span className="italic text-blue-600 capitalize">Network.</span>
+          </h1>
         </div>
 
-        {/* --- SIGNUP MODULE --- */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-slate-100 p-10 rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] relative hover:border-blue-100 transition-colors duration-700"
-        >
+        <div className="bg-white border border-slate-100 p-10 rounded-none shadow-xl relative hover:border-blue-100 transition-all duration-300">
           <form onSubmit={handleSignup} className="space-y-6">
             <AnimatePresence>
               {error && (
                 <motion.div 
-                  initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
-                  className="p-4 bg-red-50 text-red-500 text-[10px] font-black uppercase tracking-widest rounded-xl border border-red-100 text-center"
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                  className="p-4 bg-red-50 text-red-500 text-[10px] font-black uppercase tracking-widest border border-red-100 text-center"
                 >
                   {error}
                 </motion.div>
@@ -87,96 +76,78 @@ export default function UserSignup() {
 
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-2">Full Name</label>
-                <div className="relative group">
-                  <User className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-600 transition-colors" size={20} strokeWidth={2} />
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Full Name</label>
+                <div className="relative">
+                  <User className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
                   <input 
-                    required type="text" placeholder="EX. ARTHUR DENT" value={formData.name}
+                    required type="text" placeholder="FULL NAME" value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full h-16 pl-16 pr-6 bg-slate-50 border border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 outline-none text-xs font-bold uppercase transition-all shadow-inner"
+                    className="w-full h-14 pl-14 pr-6 bg-slate-50 border border-slate-100 rounded-none focus:bg-white focus:border-blue-600 outline-none text-xs font-bold uppercase transition-all shadow-inner"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-2">Email Address</label>
-                <div className="relative group">
-                  <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-600 transition-colors" size={20} strokeWidth={2} />
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Email Address</label>
+                <div className="relative">
+                  <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
                   <input 
-                    required type="email" placeholder="NAME@DOMAIN.COM" value={formData.email}
+                    required type="email" placeholder="EMAIL@DOMAIN.COM" value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full h-16 pl-16 pr-6 bg-slate-50 border border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 outline-none text-xs font-bold uppercase transition-all shadow-inner"
+                    className="w-full h-14 pl-14 pr-6 bg-slate-50 border border-slate-100 rounded-none focus:bg-white focus:border-blue-600 outline-none text-xs font-bold uppercase transition-all shadow-inner"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-2">Contact Number</label>
-                <div className="relative group">
-                  <Phone className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-600 transition-colors" size={20} strokeWidth={2} />
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Phone Number</label>
+                <div className="relative">
+                  <Phone className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
                   <input 
                     required type="tel" placeholder="+1 (000) 000-0000" value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full h-16 pl-16 pr-6 bg-slate-50 border border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 outline-none text-xs font-bold uppercase transition-all shadow-inner"
+                    className="w-full h-14 pl-14 pr-6 bg-slate-50 border border-slate-100 rounded-none focus:bg-white focus:border-blue-600 outline-none text-xs font-bold uppercase transition-all shadow-inner"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-2">Secure Password</label>
-                <div className="relative group">
-                  <Lock className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-600 transition-colors" size={20} strokeWidth={2} />
+                <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Secure Password</label>
+                <div className="relative">
+                  <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
                   <input 
                     required type={showPassword ? "text" : "password"} placeholder="••••••••" value={formData.password}
                     onChange={(e) => setFormData({...formData, password: e.target.value})}
-                    className="w-full h-16 pl-16 pr-16 bg-slate-50 border border-slate-100 rounded-2xl focus:bg-white focus:border-blue-600 outline-none text-xs font-bold uppercase transition-all shadow-inner"
+                    className="w-full h-14 pl-14 pr-16 bg-slate-50 border border-slate-100 rounded-none focus:bg-white focus:border-blue-600 outline-none text-xs font-bold uppercase transition-all shadow-inner"
                   />
                   <button 
                     type="button" onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-600 transition-colors"
+                    className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-600 transition-colors"
                   >
-                    {showPassword ? <EyeOff size={20} strokeWidth={2} /> : <Eye size={20} strokeWidth={2} />}
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
               </div>
             </div>
 
-            <motion.button 
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
+            <button 
               disabled={loading}
-              className="w-full h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] hover:bg-slate-950 transition-all shadow-[0_20px_50px_rgba(37,99,235,0.2)] active:scale-[0.98] disabled:opacity-50 mt-4 group"
+              className="w-full h-14 bg-blue-600 text-white font-black text-[10px] uppercase tracking-[0.3em] hover:bg-slate-900 transition-all flex items-center justify-center gap-4 disabled:opacity-50 mt-4"
             >
-              {loading ? <Loader2 className="animate-spin" size={20} /> : (
-                <>
-                  CREATE ACCOUNT
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </>
+              {loading ? <Loader2 className="animate-spin" size={18} /> : (
+                <>CREATE ACCOUNT <ArrowRight size={16} /></>
               )}
-            </motion.button>
+            </button>
           </form>
 
-          <div className="mt-8 pt-8 border-t border-slate-50 text-center">
+          <div className="mt-8 pt-8 border-t border-slate-100 text-center">
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-              Existing user detected?
+              Already have an account?
               <Link to="/login" className="text-blue-600 font-black hover:underline ml-2">Log In Here</Link>
             </p>
           </div>
-        </motion.div>
-
-        {/* --- SYSTEM FOOTER --- */}
-        <div className="mt-16 flex flex-col items-center gap-6 opacity-30">
-           <div className="flex items-center gap-6">
-              <ShieldCheck size={18} className="text-slate-900" />
-              <div className="h-4 w-px bg-slate-300" />
-              <Globe size={18} className="text-slate-900" />
-           </div>
-           <p className="text-[8px] font-black text-slate-400 uppercase tracking-[0.4em] text-center">
-             Authorized Partner Network // Secure Data Custody
-           </p>
         </div>
       </div>
     </div>
   );
 }
-

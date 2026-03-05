@@ -124,7 +124,7 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen bg-white pt-32 pb-20 font-urbanist overflow-hidden">
-      <SEO title="Member Dashboard | EasyMyPrint" />
+      <SEO title="Member Dashboard | myprinterman" />
       
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-blue-50/50 blur-[120px] rounded-full pointer-events-none" />

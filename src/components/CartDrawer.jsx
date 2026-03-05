@@ -14,7 +14,7 @@ export default function CartDrawer() {
     <AnimatePresence>
       {isCartDrawerOpen && (
         <>
-          {/* Immersive Overlay */}
+          {/* Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -23,53 +23,53 @@ export default function CartDrawer() {
             className="fixed inset-0 bg-slate-950/20 backdrop-blur-md z-[1000]"
           />
 
-          {/* Floating Premium Hub */}
+          {/* Drawer */}
           <motion.div
-            initial={{ x: '100%', opacity: 0, scale: 0.95 }}
-            animate={{ x: 0, opacity: 1, scale: 1 }}
-            exit={{ x: '100%', opacity: 0, scale: 0.95 }}
-            transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-4 right-4 bottom-4 w-full max-w-[480px] bg-white/95 backdrop-blur-3xl z-[1001] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.2)] flex flex-col font-urbanist rounded-[3rem] border border-white/50 overflow-hidden"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 bottom-0 w-full max-w-[450px] bg-white z-[1001] shadow-2xl flex flex-col font-urbanist border-l border-slate-100"
           >
-            {/* HUD Corner Accents */}
-            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-blue-600 m-8 opacity-20" />
-            
-            {/* Hub Header */}
-            <div className="p-10 border-b border-slate-100 relative">
+            {/* Header */}
+            <div className="p-8 border-b border-slate-100 relative">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="flex items-center gap-2 mb-2">
-                     <div className="h-1 w-1 rounded-full bg-blue-600 animate-pulse" />
-                     <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.4em]">Cart Infrastructure</span>
+                  <div className="flex items-center gap-2 mb-3">
+                     <div className="h-1 w-1 bg-blue-600 animate-pulse" />
+                     <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.4em]">Current Cart</span>
                   </div>
-                  <h2 className="text-3xl font-black text-slate-900 tracking-tighter uppercase">Your Selection.</h2>
+                  <h2 className="text-3xl font-black text-slate-900 tracking-tight flex flex-col">
+                    <span className="capitalize">Your</span>
+                    <span className="italic text-blue-600 capitalize">Selection.</span>
+                  </h2>
                 </div>
                 <button 
                   onClick={closeCartDrawer}
-                  className="h-12 w-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-900 hover:bg-slate-900 hover:text-white transition-all shadow-sm"
+                  className="h-12 w-12 bg-slate-50 flex items-center justify-center text-slate-900 hover:bg-slate-900 hover:text-white transition-all border border-slate-100"
                 >
-                  <X size={22} />
+                  <X size={20} />
                 </button>
               </div>
             </div>
 
-            {/* Hub Content */}
-            <div className="flex-1 overflow-y-auto p-10 custom-scrollbar relative">
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
               {cart.length > 0 ? (
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {cart.map((item) => (
                     <motion.div 
                       layout
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
                       key={item.id} 
-                      className="group flex gap-6 p-5 rounded-[2rem] bg-slate-50/50 border border-transparent hover:bg-white hover:border-blue-100 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-500"
+                      className="group flex gap-6 p-4 border border-slate-100 hover:border-blue-200 hover:bg-slate-50/50 transition-all duration-300"
                     >
-                      <div className="h-24 w-24 rounded-2xl bg-white border border-slate-100 p-4 flex items-center justify-center flex-shrink-0 relative group-hover:scale-105 transition-transform duration-500 shadow-sm">
+                      <div className="h-24 w-24 bg-white border border-slate-100 p-4 flex items-center justify-center flex-shrink-0 relative">
                         <img 
                           src={item.images ? `${(typeof item.images === 'string' ? JSON.parse(item.images)[0] : item.images[0])}` : ''} 
                           alt={item.name}
-                          className="max-w-full max-h-full object-contain mix-blend-multiply"
+                          className="max-w-full max-h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105"
                           onError={(e) => { e.target.src = "https://via.placeholder.com/100x100"; }}
                         />
                       </div>
@@ -85,14 +85,14 @@ export default function CartDrawer() {
                               <Trash2 size={14} />
                             </button>
                           </div>
-                          <h3 className="text-[13px] font-black text-slate-900 uppercase truncate pr-4">{item.name}</h3>
+                          <h3 className="text-[13px] font-black text-slate-900 uppercase truncate pr-4">{item.name.toLowerCase()}</h3>
                         </div>
 
                         <div className="flex items-center justify-between mt-4">
-                          <div className="flex items-center gap-4 bg-white rounded-xl px-3 py-1.5 border border-slate-100 shadow-sm">
-                            <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="text-slate-400 hover:text-blue-600 transition-colors"><Minus size={12} strokeWidth={3} /></button>
-                            <span className="text-xs font-black w-4 text-center text-slate-900">{item.quantity}</span>
-                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="text-slate-400 hover:text-blue-600 transition-colors"><Plus size={12} strokeWidth={3} /></button>
+                          <div className="h-10 bg-white border border-slate-100 flex items-center">
+                            <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="h-full w-8 flex items-center justify-center hover:bg-slate-50 text-slate-400 hover:text-blue-600 transition-all border-r border-slate-100"><Minus size={12} strokeWidth={3} /></button>
+                            <span className="text-xs font-black w-10 text-center text-slate-900">{item.quantity}</span>
+                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="h-full w-8 flex items-center justify-center hover:bg-slate-50 text-slate-400 hover:text-blue-600 transition-all border-l border-slate-100"><Plus size={12} strokeWidth={3} /></button>
                           </div>
                           <span className="text-base font-black text-slate-900">${(item.price * item.quantity).toLocaleString()}</span>
                         </div>
@@ -102,68 +102,63 @@ export default function CartDrawer() {
                 </div>
               ) : (
                 <div className="h-full flex flex-col items-center justify-center text-center px-6">
-                  <div className="h-24 w-24 rounded-[2rem] bg-slate-50 flex items-center justify-center mb-8 border border-slate-100">
+                  <div className="h-20 w-20 bg-slate-50 flex items-center justify-center mb-8 border border-slate-100">
                     <ShoppingBag size={32} className="text-slate-200" />
                   </div>
-                  <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-3">Inventory Empty.</h3>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] leading-relaxed mb-10">No professional gear detected in your current session.</p>
+                  <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-3">Cart is Empty.</h3>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] leading-relaxed mb-10">You haven't added any products yet.</p>
                   <Link 
                     to="/shop"
                     onClick={closeCartDrawer}
-                    className="h-14 px-10 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-blue-600 transition-all shadow-xl flex items-center justify-center"
+                    className="h-14 px-10 bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 transition-all shadow-lg flex items-center justify-center"
                   >
-                    Enter Showroom
+                    SHOP NOW
                   </Link>
                 </div>
               )}
             </div>
 
-            {/* Hub Footer */}
+            {/* Footer */}
             {cart.length > 0 && (
-              <div className="p-10 bg-slate-50/80 border-t border-slate-100 backdrop-blur-md">
-                <div className="flex items-center justify-between mb-10">
+              <div className="p-8 bg-slate-50 border-t border-slate-100">
+                <div className="flex items-center justify-between mb-8">
                   <div className="flex flex-col">
-                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1">Total Valuation</span>
-                     <div className="flex items-center gap-3">
-                        <Activity size={14} className="text-blue-600 animate-pulse" />
-                        <span className="text-3xl font-black text-slate-900 tracking-tighter">${total.toLocaleString()}</span>
-                     </div>
+                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-1">Subtotal</span>
+                     <span className="text-3xl font-black text-slate-900 tracking-tighter">${total.toLocaleString()}</span>
                   </div>
-                  <div className="h-12 w-px bg-slate-200" />
                   <div className="text-right">
-                     <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">Items</span>
-                     <span className="text-xl font-black text-blue-600">{cartCount} Units</span>
+                     <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">Total Items</span>
+                     <span className="text-xl font-black text-blue-600">{cartCount}</span>
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-3">
                   <Link 
                     to="/cart" 
                     onClick={closeCartDrawer}
-                    className="w-full h-14 bg-white border border-slate-200 text-slate-900 rounded-2xl flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all shadow-sm"
+                    className="w-full h-14 bg-white border border-slate-200 text-slate-900 flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all shadow-sm"
                   >
-                    View Operational Bag
+                    VIEW FULL CART
                   </Link>
                   <Link 
                     to="/checkout"
                     onClick={closeCartDrawer}
-                    className="w-full h-16 bg-blue-600 text-white rounded-[1.5rem] flex items-center justify-center gap-4 text-[11px] font-black uppercase tracking-widest hover:bg-slate-900 transition-all shadow-[0_20px_40px_rgba(37,99,235,0.3)] group"
+                    className="w-full h-16 bg-blue-600 text-white flex items-center justify-center gap-4 text-[11px] font-black uppercase tracking-widest hover:bg-slate-900 transition-all shadow-xl group"
                   >
-                    <ShieldCheck size={18} />
-                    INITIALIZE CHECKOUT
-                    <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+                    SECURE CHECKOUT
+                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
                 
-                <div className="mt-8 flex items-center justify-center gap-6 opacity-40">
+                <div className="mt-8 flex items-center justify-center gap-6 opacity-30">
                    <div className="flex items-center gap-2">
-                      <Zap size={12} className="text-slate-900" />
-                      <span className="text-[8px] font-black uppercase tracking-widest">Encrypted</span>
+                      <ShieldCheck size={14} className="text-slate-900" />
+                      <span className="text-[8px] font-black uppercase tracking-widest">VERIFIED</span>
                    </div>
-                   <div className="h-1 w-1 rounded-full bg-slate-300" />
+                   <div className="h-1 w-1 bg-slate-300" />
                    <div className="flex items-center gap-2">
-                      <ShieldCheck size={12} className="text-slate-900" />
-                      <span className="text-[8px] font-black uppercase tracking-widest">Verified Hub</span>
+                      <img src="/brands/hp.png" alt="" className="h-3 w-auto grayscale" />
+                      <span className="text-[8px] font-black uppercase tracking-widest">PARTNER</span>
                    </div>
                 </div>
               </div>

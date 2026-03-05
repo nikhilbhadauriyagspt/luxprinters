@@ -28,19 +28,19 @@ export default function PolicyLayout({ title, subtitle, lastUpdated, children })
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 tracking-tighter uppercase leading-[0.85] mb-10">
-              <span className="block mb-2">{title.split(' ').slice(0, -1).join(' ') || title}</span>
-              <span className="text-transparent stroke-text-light italic">{title.split(' ').slice(-1)}</span>
+            <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-slate-900 leading-[0.9] tracking-tight flex flex-col mb-10">
+              <span className="capitalize">{title.split(' ').slice(0, -1).join(' ') || title}</span>
+              <span className="italic text-blue-600 capitalize">{title.split(' ').slice(-1)}</span>
             </h1>
 
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 border-t border-slate-100 pt-10">
               {subtitle && (
-                <p className="text-slate-500 text-lg font-bold max-w-2xl leading-relaxed uppercase tracking-tight">
+                <p className="text-slate-500 text-lg font-medium max-w-2xl leading-relaxed capitalize tracking-tight">
                   {subtitle}
                 </p>
               )}
               
-              <div className="flex items-center gap-4 bg-slate-50 px-6 py-3 rounded-2xl border border-slate-100 shrink-0">
+              <div className="flex items-center gap-4 bg-slate-50 px-6 py-3 rounded-none border border-slate-100 shrink-0">
                 <Clock size={14} className="text-blue-600" />
                 <span className="text-slate-900 text-[10px] font-black uppercase tracking-widest">Revised: {lastUpdated}</span>
               </div>

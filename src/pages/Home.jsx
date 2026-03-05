@@ -84,8 +84,8 @@ export default function Home() {
   return (
     <div className="bg-white font-snpro overflow-x-hidden text-slate-900">
       <SEO 
-        title="Authorized HP Partner | Premium Printers & Hardware" 
-        description="Premium destination for authorized HP printers, precision tech, and essential accessories. Delivering excellence in tech solutions across the USA."
+        title="MyPrinterMan | Premium Printers & Hardware" 
+        description="Premium destination for authorized HP printers, and essential accessories. Delivering excellence in tech solutions across the USA."
       />
       
       <Hero />
@@ -102,133 +102,53 @@ export default function Home() {
         products={data.printers} 
       />
 
-      <QuickPicks products={data.all} />
-
-      {/* 13. EXPERT CONSULTING - MODERN PREMIUM REDESIGN */}
-      <section className="py-24 lg:py-32 bg-slate-50 font-urbanist relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[40%] h-full bg-blue-50/50 blur-[120px] rounded-full pointer-events-none" />
-        
+      {/* 13. EXPERT ADVISORY - REDESIGNED */}
+      <section className="py-24 lg:py-32 bg-white font-urbanist relative overflow-hidden border-t border-slate-100">
         <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
             
             {/* Left Content */}
             <div className="lg:col-span-5">
               <div className="flex items-center gap-2 mb-6">
-                <span className="h-[1px] w-6 bg-blue-600 animate-pulse" />
-                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.4em]">Elite Advisory</span>
+                <span className="h-[1px] w-4 bg-blue-600 animate-pulse" />
+                <span className="text-[9px] font-black text-blue-600 uppercase tracking-[0.4em]">Expert Help</span>
               </div>
               
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter uppercase leading-[0.85] mb-10">
-                <span className="block mb-2">MASTERFUL STRATEGIC</span>
-                <span className="text-transparent stroke-text-light">GUIDANCE.</span>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[0.85] tracking-tight flex flex-col mb-10">
+                <span className="capitalize">Expert</span>
+                <span className="italic text-blue-600 capitalize">Advisory.</span>
               </h2>
               
-              <p className="text-slate-500 text-lg md:text-xl font-bold leading-relaxed mb-12 max-w-md border-l-4 border-slate-200 pl-8">
-                Enhance your professional environment with our bespoke guidance. Our dedicated specialists deliver refined excellence for superior workspace productivity.
+              <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed mb-12 max-w-md border-l-2 border-slate-100 pl-8">
+                Make your daily work easier with our expert help. We provide simple and reliable advice to help you pick the best tools for your office.
               </p>
               
               <Link to="/contact">
-                <motion.button 
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="h-16 px-12 bg-slate-900 text-white font-black text-xs uppercase tracking-[0.3em] rounded-[1.5rem] shadow-2xl shadow-black/10 hover:bg-blue-600 transition-all duration-500 flex items-center gap-4 group"
-                >
-                  REQUEST ADVISORY
-                  <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-                </motion.button>
+                <button className="h-16 px-12 bg-slate-900 text-white font-black text-[11px] uppercase tracking-[0.3em] rounded-none hover:bg-blue-600 transition-colors flex items-center gap-4 group">
+                  TALK TO US
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </button>
               </Link>
             </div>
 
             {/* Right Grid */}
-            <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 border-t border-l border-slate-100">
               {[
-                { icon: <Shield size={28} />, title: "Premium Warranty", desc: "Official protection protocols for your hardware." },
-                { icon: <Wrench size={28} />, title: "Precision Setup", desc: "Optimized configuration for peak performance." },
-                { icon: <Zap size={28} />, title: "Priority Response", desc: "Dedicated assistance for your critical needs." },
-                { icon: <Layers size={28} />, title: "Seamless Scaling", desc: "Future-ready deployment for growing teams." }
+                { icon: <Shield size={24} />, title: "Help With Tools", desc: "We are here to help you keep everything working perfectly." },
+                { icon: <Wrench size={24} />, title: "Easy Setup", desc: "We'll show you how to get your new gear ready in no time." },
+                { icon: <Zap size={24} />, title: "Quick Help", desc: "Whenever you have a question, our team is ready to answer." },
+                { icon: <Layers size={24} />, title: "Better Work", desc: "Make your daily work easier with the right tools for your team." }
               ].map((item, i) => (
-                <motion.div 
+                <div 
                   key={i}
-                  whileHover={{ y: -10 }}
-                  className="p-10 bg-white/60 backdrop-blur-xl border border-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(37,99,235,0.08)] transition-all duration-700 group hover:border-blue-100"
+                  className="p-12 bg-white border-r border-b border-slate-100 flex flex-col group hover:bg-slate-50 transition-colors duration-300"
                 >
-                   <div className="h-14 w-14 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                   <div className="h-12 w-12 bg-slate-900 text-white flex items-center justify-center mb-8 group-hover:bg-blue-600 transition-colors">
                       {item.icon}
                    </div>
-                   <h4 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-3">{item.title}</h4>
-                   <p className="text-sm font-bold text-slate-400 uppercase tracking-widest leading-relaxed group-hover:text-slate-500">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 14. SCALABLE INFRASTRUCTURE - MODERN PREMIUM REDESIGN */}
-      <section className="py-24 lg:py-32 bg-white font-urbanist relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-600/10 to-transparent" />
-        
-        <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-24">
-            
-            {/* Left Column */}
-            <div className="lg:w-1/2">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="h-[1px] w-6 bg-blue-600 animate-pulse" />
-                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.4em]">Global Excellence</span>
-              </div>
-              
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter uppercase leading-[0.85] mb-10">
-                <span className="block mb-2">SEAMLESS</span>
-                <span className="text-transparent stroke-text-light">EXPERIENCES.</span>
-              </h2>
-              
-              <p className="text-slate-500 text-lg md:text-xl font-bold leading-relaxed mb-12 max-w-lg border-l-4 border-blue-50 pl-8">
-                Offering refined acquisition channels and comprehensive stewardship for premier organizations across the globe.
-              </p>
-              
-              <div className="flex gap-12 lg:gap-20">
-                 <div className="flex flex-col group cursor-default">
-                    <span className="text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter group-hover:text-blue-600 transition-colors duration-500">500+</span>
-                    <div className="flex items-center gap-2 mt-3">
-                       <div className="h-1 w-1 rounded-full bg-blue-600" />
-                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Strategic Allies</span>
-                    </div>
-                 </div>
-                 <div className="w-px h-16 bg-slate-100" />
-                 <div className="flex flex-col group cursor-default">
-                    <span className="text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter group-hover:text-blue-600 transition-colors duration-500">24H</span>
-                    <div className="flex items-center gap-2 mt-3">
-                       <div className="h-1 w-1 rounded-full bg-blue-600" />
-                       <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Swift Support</span>
-                    </div>
-                 </div>
-              </div>
-            </div>
-
-            {/* Right Column (Bento Cards) */}
-            <div className="lg:w-1/2 flex flex-col gap-4">
-              {[
-                { id: "01", title: "Enterprise Pricing", desc: "Optimized procurement for high-volume units." },
-                { id: "02", title: "Asset Management", desc: "Comprehensive device tracking & lifecycle support." },
-                { id: "03", title: "Priority Logistics", desc: "Tracked international fulfillment networks." }
-              ].map((item, i) => (
-                <motion.div 
-                  key={i}
-                  whileHover={{ x: 15 }}
-                  className="bg-slate-50/50 hover:bg-white p-8 rounded-[2.5rem] border border-slate-100 hover:border-blue-100 transition-all duration-500 group flex items-center justify-between hover:shadow-[0_30px_60px_rgba(0,0,0,0.03)]"
-                >
-                  <div className="flex items-center gap-10">
-                     <span className="text-sm font-black text-blue-600/20 group-hover:text-blue-600 transition-colors duration-500 italic">[{item.id}]</span>
-                     <div>
-                        <h4 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-1">{item.title}</h4>
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest max-w-[280px] leading-relaxed group-hover:text-slate-500">{item.desc}</p>
-                     </div>
-                  </div>
-                  <Link to="/contact" className="h-12 w-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-slate-900 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-500 shadow-sm">
-                     <ArrowUpRight size={20} />
-                  </Link>
-                </motion.div>
+                   <h4 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-4">{item.title}</h4>
+                   <p className="text-sm font-medium text-slate-500 leading-relaxed">{item.desc}</p>
+                </div>
               ))}
             </div>
           </div>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://easymyprint.shop/sitemap.xml
+Sitemap: https://myprinterman.com/sitemap.xml

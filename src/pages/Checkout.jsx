@@ -251,7 +251,7 @@ export default function Checkout() {
                               style={{ layout: "vertical", shape: "pill", label: "pay" }}
                               createOrder={(data, actions) => {
                                 return actions.order.create({
-                                  purchase_units: [{ amount: { value: finalTotal.toString() }, description: `EASYMYPRINT Operational Supply - ${cartCount} Units` }],
+                                  purchase_units: [{ amount: { value: finalTotal.toString() }, description: `myprinterman Operational Supply - ${cartCount} Units` }],
                                 });
                               }}
                               onApprove={async (data, actions) => {

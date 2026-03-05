@@ -3,61 +3,67 @@ import {
   ShieldCheck, 
   Truck, 
   RotateCcw,
-  Settings
+  Zap
 } from "lucide-react";
 
 const features = [
   {
-    icon: <ShieldCheck size={24} />,
-    title: "Authorized Warranty",
-    desc: "Comprehensive partner coverage",
-    label: "PREMIUM PROTECTION"
+    icon: <ShieldCheck size={28} />,
+    title: "Official Support",
+    desc: "We are here to help you with anything you need for your printing tools.",
+    accent: "blue"
   },
   {
-    icon: <Truck size={24} />,
-    title: "Priority Shipping",
-    desc: "Next-day dispatch protocol",
-    label: "GLOBAL LOGISTICS"
+    icon: <Truck size={28} />,
+    title: "Fast Delivery",
+    desc: "We make sure your order reaches you as quickly as possible, everywhere.",
+    accent: "indigo"
   },
   {
-    icon: <RotateCcw size={24} />,
-    title: "Secure Returns",
-    desc: "Hassle-free 7-day policy",
-    label: "CLIENT ASSURANCE"
+    icon: <RotateCcw size={28} />,
+    title: "Simple Returns",
+    desc: "Not happy? No problem. Returning items is easy and stress-free with us.",
+    accent: "slate"
+  },
+  {
+    icon: <Zap size={28} />,
+    title: "Quick Setup",
+    desc: "Our products are designed to be ready to use in just a few simple steps.",
+    accent: "blue"
   }
 ];
 
 export default function Features() {
   return (
-    <section className="bg-white font-urbanist py-12 border-b border-slate-50">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
+    <section className="bg-white font-urbanist py-16">
+      <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-l border-slate-100">
           {features.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center group"
+              className="p-10 border-r border-b border-slate-100 flex flex-col group hover:bg-slate-50 transition-colors duration-300"
             >
-              {/* Ultra Clean Icon */}
-              <div className="mb-6 text-slate-900 group-hover:text-blue-600 transition-all duration-500 transform group-hover:scale-110">
+              {/* Icon */}
+              <div className="mb-8 text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
                 {item.icon}
               </div>
 
-              {/* Minimal Text Stack */}
-              <div className="space-y-1">
-                <h3 className="text-[13px] font-black uppercase tracking-[0.25em] text-slate-900">
+              {/* Text */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">
+                <p className="text-sm font-medium text-slate-500 leading-relaxed">
                   {item.desc}
                 </p>
               </div>
 
-              {/* Bottom Accent Line */}
-              <div className="mt-6 h-[1px] w-8 bg-slate-100 group-hover:w-16 group-hover:bg-blue-600 transition-all duration-700" />
+              {/* Bottom Decoration */}
+              <div className="mt-8 h-1 w-12 bg-slate-100 group-hover:bg-blue-600 transition-all duration-500" />
             </motion.div>
           ))}
         </div>

@@ -15,12 +15,11 @@ export default function ReturnPolicy() {
 
       <h2>RETURN PROCESS</h2>
       <p>
-                 To return an item, please email customer service at <a href="mailto:info@easymyprint.shop">info@easymyprint.shop</a> to obtain an Return Merchandise Authorization (RMA) number.      </p>
-      <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 mt-6 not-prose">
-        <p className="font-medium text-slate-700 mb-4 italic">After receiving an RMA number, place the item securely in its original packaging and include your proof of purchase, then mail your return to the following address:</p>
+                 To return an item, please email customer service at <a href="mailto:info@myprinterman.com">info@myprinterman.com</a>.      </p>
+      <div className="bg-slate-50 p-8 rounded-none border border-slate-100 mt-6 not-prose">
+        <p className="font-medium text-slate-700 mb-4 italic">Place the item securely in its original packaging and include your proof of purchase, then mail your return to the following address:</p>
         <address className="not-italic text-slate-900 font-black leading-relaxed uppercase tracking-tighter">
-                     EASYMYPRINT LLC<br />          Attn: Returns<br />
-          RMA #<br />
+                     My PrinterMan <br />
                      722 N West St<br />
                      Raleigh, NC 27603<br />          United States
         </address>
@@ -42,9 +41,9 @@ export default function ReturnPolicy() {
       <hr />
       <h2>QUESTIONS</h2>
       <p>If you have any questions concerning our return policy, please contact us at:</p>
-      <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-8 not-prose">
+      <div className="bg-slate-50 p-8 rounded-none border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-3">
-                     <p className="flex items-center gap-3 text-blue-600 font-black tracking-tight">info@easymyprint.shop</p>          <p className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em]">Contact support for immediate assistance</p>
+                     <p className="flex items-center gap-3 text-blue-600 font-black tracking-tight">info@myprinterman.com</p>          <p className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em]">Contact support for immediate assistance</p>
         </address>
       </div>
     </PolicyLayout>
