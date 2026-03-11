@@ -84,7 +84,9 @@ export default function Home() {
   return (
     <div className="bg-white font-snpro overflow-x-hidden text-slate-900">
       <SEO 
-        title="MyPrinterMan | Premium Printers & Hardware" 
+        title="PrinterPrime
+ 
+  | Premium Printers & Hardware" 
         description="Premium destination for professional printers, and essential accessories. Delivering excellence in tech solutions across the USA."
       />
       
@@ -102,54 +104,30 @@ export default function Home() {
         products={data.printers} 
       />
 
-      {/* 13. EXPERT ADVISORY - REDESIGNED */}
-      <section className="py-24 lg:py-32 bg-white font-urbanist relative overflow-hidden border-t border-slate-100">
-        <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+      {/* --- MINIMAL CONTACT CTA BANNER --- */}
+      <section className="py-20 lg:py-28 bg-white font-urbanist px-6">
+        <div className="max-w-[1920px] mx-auto">
+          <div className="relative bg-indigo-950 rounded-[3rem] p-12 lg:p-24 overflow-hidden flex flex-col items-center text-center">
+            {/* Background Accent */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
             
-            {/* Left Content */}
-            <div className="lg:col-span-5">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="h-[1px] w-4 bg-blue-600 animate-pulse" />
-                <span className="text-[9px] font-black text-blue-600 uppercase tracking-[0.4em]">Expert Help</span>
-              </div>
-              
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[0.85] tracking-tight flex flex-col mb-10">
-                <span className="capitalize">Expert</span>
-                <span className="italic text-blue-600 capitalize">Advisory.</span>
+            <div className="relative z-10 max-w-3xl space-y-8">
+              <h2 className="text-3xl md:text-5xl font-black text-white leading-tight ">
+                Need help with your <br />
+                <span className="text-amber-500">Printing Setup?</span>
               </h2>
-              
-              <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed mb-12 max-w-md border-l-2 border-slate-100 pl-8">
-                Make your daily work easier with our expert help. We provide simple and reliable advice to help you pick the best tools for your office.
+              <p className="text-indigo-200/60 text-lg font-medium">
+                Our experts are ready to provide simple and reliable advice to help you pick the best tools for your office.
               </p>
               
-              <Link to="/contact">
-                <button className="h-16 px-12 bg-slate-900 text-white font-black text-[11px] uppercase tracking-[0.3em] rounded-none hover:bg-blue-600 transition-colors flex items-center gap-4 group">
-                  TALK TO US
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
-            </div>
-
-            {/* Right Grid */}
-            <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 border-t border-l border-slate-100">
-              {[
-                { icon: <Shield size={24} />, title: "Help With Tools", desc: "We are here to help you keep everything working perfectly." },
-                { icon: <Wrench size={24} />, title: "Easy Setup", desc: "We'll show you how to get your new gear ready in no time." },
-                { icon: <Zap size={24} />, title: "Quick Help", desc: "Whenever you have a question, our team is ready to answer." },
-                { icon: <Layers size={24} />, title: "Better Work", desc: "Make your daily work easier with the right tools for your team." }
-              ].map((item, i) => (
-                <div 
-                  key={i}
-                  className="p-12 bg-white border-r border-b border-slate-100 flex flex-col group hover:bg-slate-50 transition-colors duration-300"
-                >
-                   <div className="h-12 w-12 bg-slate-900 text-white flex items-center justify-center mb-8 group-hover:bg-blue-600 transition-colors">
-                      {item.icon}
-                   </div>
-                   <h4 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-4">{item.title}</h4>
-                   <p className="text-sm font-medium text-slate-500 leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
+              <div className="pt-6">
+                <Link to="/contact" className="inline-block group">
+                  <button className="h-15 px-10 bg-amber-500 text-indigo-950 font-black text-sm uppercase tracking-[0.2em] rounded-2xl hover:bg-amber-400 transition-all active:scale-95 flex items-center gap-4 shadow-xl shadow-amber-500/20">
+                    CONTACT OUR EXPERTS
+                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

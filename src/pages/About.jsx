@@ -1,175 +1,134 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import SEO from '@/components/SEO';
-import { ShieldCheck, Zap, Heart, Globe, Award, Users, ChevronRight, Printer, Package, Wrench, Leaf, MapPin, Mail, Phone, ArrowUpRight, ArrowRight, Activity, Terminal, Layers, Box, Sparkles, Monitor } from 'lucide-react';
+import { ArrowRight, Heart, Users, Star, Printer } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import banner1 from "@/assets/bannerr/about.jpg";
+import SEO from '@/components/SEO';
 import { cn } from '../lib/utils';
+import bannerImg from "@/assets/bannerr/banner2.jpg";
 
-export default function About() {
+const About = () => {
   return (
-    <div className="bg-white min-h-screen font-urbanist overflow-hidden">
+    <div className="bg-white min-h-screen font-urbanist">
       <SEO 
-        title="About Us" 
-        description="Learn about MyPrinterMan, our mission to provide the best printing solutions, and our commitment as a premium hardware specialist."
+        title="About Us | PrinterPrime" 
+        description="Learn more about our mission to provide the best printing solutions."
       />
 
-      {/* --- COMPACT HERO SECTION --- */}
-      <section className="relative py-16 lg:py-20 px-6 md:px-10 lg:px-16 bg-white overflow-hidden border-b border-slate-50 pt-28 lg:pt-32 lg:min-h-[70vh] flex items-center">
-        <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
-          
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-7 space-y-8"
-          >
-        
-
-            <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-slate-950 leading-[0.9] tracking-tight flex flex-col">
-              <span className="capitalize">Better Printing</span>
-              <span className="italic text-blue-600 capitalize">Solutions.</span>
-            </h1>
-
-            <p className="text-slate-500 text-base md:text-lg font-medium leading-relaxed max-w-xl border-l-2 border-slate-100 pl-6">
-              We provide high-quality printers and professional hardware to make sure your office runs smoothly. MyPrinterMan makes finding the right tools simple.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-6 pt-2">
-              <Link to="/shop">
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="h-14 px-10 bg-slate-900 text-white font-black text-[10px] uppercase tracking-[0.3em] rounded-none shadow-lg hover:bg-blue-600 transition-colors flex items-center gap-4 group"
-                >
-                  VIEW CATALOG <ArrowRight size={16} />
-                </motion.button>
-              </Link>
+      {/* --- HERO SECTION --- */}
+      <section className="relative pt-12 pb-24 lg:pt-16 lg:pb-32 overflow-hidden bg-slate-50">
+        <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <h1 className="text-5xl md:text-7xl font-black text-indigo-950 ">
+                Helping You <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-500">Print Better.</span>
+              </h1>
+              <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed max-w-xl">
+                We started with a simple goal to make finding the right printer and supplies easy for everyone. Whether you are working from home or running a busy office, we are here to help.
+              </p>
+              <div className="flex gap-4">
+                 <Link to="/shop" className="px-8 py-4 bg-indigo-950 text-white rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-indigo-800 transition-all">
+                    Browse Shop
+                 </Link>
+              </div>
             </div>
-          </motion.div>
-
-          <div className="lg:col-span-5 relative flex justify-end">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="relative aspect-[16/10] lg:aspect-square overflow-hidden rounded-none shadow-xl bg-slate-900 w-full lg:max-w-[90%]"
-            >
-              <img src={banner1} alt="Professional Hardware" className="w-full h-full object-cover grayscale-[10%]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 to-transparent pointer-events-none" />
-            </motion.div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* --- CORE VALUES (COMPACT) --- */}
-      <section className="py-16 lg:py-24 px-6 md:px-10 lg:px-16 bg-slate-50 relative overflow-hidden">
-        <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10 w-full">
-          
-          <div className="lg:col-span-5 space-y-8">
-             <div className="flex items-center gap-2">
-                <span className="h-[1px] w-4 bg-blue-600 animate-pulse" />
-                <span className="text-[9px] font-black text-blue-600 uppercase tracking-[0.4em]">Our Core</span>
-             </div>
-             <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-[0.9] flex flex-col">
-               <span className="capitalize">Why Choose</span>
-               <span className="italic text-blue-600 capitalize">Us.</span>
-             </h2>
-             <div className="space-y-4">
-                <p className="text-base font-bold text-slate-900 leading-relaxed uppercase tracking-tight">
-                  MyPrinterMan is dedicated to your business success.
-                </p>
-                <p className="text-sm font-medium text-slate-500 leading-relaxed border-l-2 border-slate-200 pl-6">
-                  We believe in equipment that works perfectly. We partner with top brands to offer reliable products backed by expert support.
-                </p>
-             </div>
-          </div>
-
-          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 border-t border-l border-slate-200">
-             {[
-               { icon: <ShieldCheck size={24} />, title: "Guaranteed Quality", desc: "Every product is 100% genuine and tested." },
-               { icon: <Zap size={24} />, title: "Fast Delivery", desc: "We get your order to you quickly." },
-               { icon: <Phone size={24} />, title: "Expert Support", desc: "Our team is always ready to help you." },
-               { icon: <Globe size={24} />, title: "Nationwide Reach", desc: "We ship securely to offices everywhere." }
-             ].map((item, i) => (
-               <div 
-                 key={i}
-                 className="p-8 bg-white border-r border-b border-slate-200 hover:bg-slate-50 transition-colors group"
-               >
-                  <div className="h-12 w-12 bg-slate-900 text-white flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
-                    {item.icon}
-                  </div>
-                  <h4 className="text-lg font-black text-slate-900 uppercase tracking-tight mb-2">{item.title}</h4>
-                  <p className="text-xs font-medium text-slate-500 leading-relaxed">{item.desc}</p>
+            <div className="relative">
+               <div className="aspect-[4/3] rounded-[3rem] overflow-hidden shadow-xl border border-white">
+                  <img 
+                    src={bannerImg} 
+                    alt="Our Office" 
+                    className="w-full h-full object-cover"
+                  />
                </div>
-             ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* --- MISSION (SCREEN FIT) --- */}
-      <section className="py-16 px-6 md:px-10 lg:px-16 bg-white">
-        <div className="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="p-12 lg:p-16 bg-slate-900 text-white rounded-none relative overflow-hidden group">
-             <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Box size={120} strokeWidth={1} />
-             </div>
-             <div className="relative z-10 space-y-6">
-                <span className="text-[9px] font-black uppercase tracking-[0.5em] text-blue-400">Mission</span>
-                <h3 className="text-4xl lg:text-5xl font-black tracking-tight leading-[0.9] flex flex-col">
-                  <span className="capitalize">Make Work</span>
-                  <span className="italic text-blue-400 capitalize">Simple.</span>
-                </h3>
-                <p className="text-white/70 font-medium text-base leading-relaxed max-w-xs border-l-2 border-white/20 pl-6">
-                  Reliable and easy printing solutions for businesses of all sizes.
-                </p>
-             </div>
-          </div>
-          
-          <div className="p-12 lg:p-16 bg-blue-600 text-white rounded-none relative overflow-hidden group">
-             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Globe size={120} strokeWidth={1} />
-             </div>
-             <div className="relative z-10 space-y-6">
-                <span className="text-[9px] font-black uppercase tracking-[0.5em] text-blue-200">Vision</span>
-                <h3 className="text-4xl lg:text-5xl font-black tracking-tight leading-[0.9] flex flex-col">
-                  <span className="capitalize">Global</span>
-                  <span className="italic text-blue-200 capitalize">Support.</span>
-                </h3>
-                <p className="text-white/80 font-medium text-base leading-relaxed max-w-xs border-l-2 border-white/30 pl-6">
-                  The most trusted name in office hardware and exceptional service.
-                </p>
-             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- COMPACT CTA --- */}
-      <section className="px-6 md:px-10 lg:px-16 py-16 lg:py-20 bg-white border-t border-slate-100">
-        <div className="max-w-[1920px] mx-auto">
-          <div className="p-12 lg:p-16 bg-slate-50 text-slate-900 border border-slate-200 text-center rounded-none group flex flex-col items-center">
-            <h2 className="text-4xl lg:text-6xl font-black tracking-tight mb-8 leading-[0.9] flex flex-col items-center">
-              <span className="capitalize">Upgrade Your</span>
-              <span className="italic text-blue-600 capitalize">Office.</span>
+      {/* --- OUR MISSION --- */}
+      <section className="py-24 lg:py-32 bg-white">
+        <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-16">
+          <div className="flex flex-col items-center text-center mb-20 relative">
+            <h2 className="text-4xl md:text-5xl font-black leading-none  inline-block relative z-10">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500">
+                What We Believe In
+              </span>
             </h2>
-            <Link to="/shop" className="h-14 px-10 bg-slate-900 text-white hover:bg-blue-600 transition-colors font-black text-[10px] uppercase tracking-[0.3em] shadow-md inline-flex items-center gap-4">
-              SHOP NOW <ArrowRight size={16} />
-            </Link>
+            
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+            {[
+              {
+                title: "Quality First",
+                desc: "We only sell products we trust. Every printer and ink cartridge is checked to make sure it works perfectly for you.",
+                color: "bg-blue-50",
+                icon: <Star className="text-blue-600" />
+              },
+              {
+                title: "Always Helpful",
+                desc: "Our team is here to answer your questions in plain English. No confusing talk, just simple help when you need it.",
+                color: "bg-amber-50",
+                icon: <Users className="text-amber-600" />
+              },
+              {
+                title: "Reliable Service",
+                desc: "We know your work is important. That's why we focus on fast shipping and making sure your orders arrive safely.",
+                color: "bg-indigo-50",
+                icon: <Heart className="text-indigo-600" />
+              }
+            ].map((value, i) => (
+              <div key={i} className={cn("p-12 rounded-[2.5rem] transition-all duration-500 hover:-translate-y-2", value.color)}>
+                <div className="h-14 w-14 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
+                   {value.icon}
+                </div>
+                <h3 className="text-2xl font-black text-indigo-950  mb-4">{value.title}</h3>
+                <p className="text-slate-600 font-medium leading-relaxed">{value.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <style>{`
-        .stroke-text-white {
-          -webkit-text-stroke: 1.5px white;
-          color: transparent;
-        }
-        .stroke-text-light {
-          -webkit-text-stroke: 2px #0f172a;
-          color: transparent;
-        }
-      `}</style>
+      {/* --- STORY SECTION --- */}
+      <section className="py-24 lg:py-32 bg-indigo-950 overflow-hidden relative">
+         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+           
+         </div>
+         
+         <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+            <div className="max-w-4xl mx-auto text-center space-y-10">
+               <h2 className="text-4xl md:text-6xl font-black text-white">
+                 A Local Business With <br />
+                 <span className="text-amber-500">Big Dreams.</span>
+               </h2>
+               <p className="text-indigo-100/70 text-lg md:text-xl font-medium leading-relaxed">
+                 PrinterPrime started as a small local shop. We realized that people were tired of complicated websites and poor support when buying office gear. We decided to change that by building a store that puts people first. Today, we are proud to serve thousands of customers with the same friendly service we started with.
+               </p>
+               <div className="pt-6">
+                  <div className="h-1.5 w-24 bg-amber-500 mx-auto rounded-full" />
+               </div>
+            </div>
+         </div>
+      </section>
+
+      {/* --- SIMPLE CTA --- */}
+      <section className="py-24 lg:py-32 bg-white text-center">
+         <div className="max-w-3xl mx-auto px-6 space-y-10">
+            <h2 className="text-4xl font-black text-indigo-950 ">Ready to find your perfect printer?</h2>
+            <p className="text-slate-500 text-lg font-medium">Explore our collection of top-rated hardware today.</p>
+            <div className="flex justify-center pt-4">
+               <Link to="/shop" className="group flex items-center gap-6 p-2 pr-10 bg-indigo-950 rounded-full hover:bg-amber-500 transition-all duration-500">
+                  <div className="h-14 w-14 bg-white rounded-full flex items-center justify-center group-hover:bg-indigo-950 transition-colors">
+                     <ArrowRight size={24} className="text-indigo-950 group-hover:text-white" />
+                  </div>
+                  <span className="text-sm font-black text-white group-hover:text-indigo-950 uppercase tracking-widest">Go to Shop</span>
+               </Link>
+            </div>
+         </div>
+      </section>
     </div>
   );
-}
+};
+
+export default About;

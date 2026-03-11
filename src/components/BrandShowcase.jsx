@@ -1,71 +1,83 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Globe, ShieldCheck, Zap } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { cn } from "../lib/utils";
 
 export default function BrandShowcase({ brands = [] }) {
   const getBrandLogo = (brand) => {
     if (brand.logo) return brand.logo;
-    return `https://ui-avatars.com/api/?name=${brand.name}&background=f8fafc&color=0f172a&bold=true`;
+    return `https://ui-avatars.com/api/?name=${brand.name}&background=f8fafc&color=312e81&bold=true`;
   };
 
   if (brands.length === 0) return null;
 
+  // Duplicate brands for seamless infinite loop
   const marqueeBrands = [...brands, ...brands, ...brands, ...brands];
 
   return (
-    <section className="py-24 lg:py-32 bg-white font-urbanist relative overflow-hidden">
+    <section className="py-20 lg:py-24 bg-white font-urbanist relative overflow-hidden">
       
-      <div className="max-w-[1920px] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
+      <div className="max-w-[1920px] mx-auto relative z-10">
         
-        {/* --- HEADER --- */}
-        <div className="flex flex-col items-center text-center mb-20">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="h-[1px] w-4 bg-blue-600 animate-pulse" />
-            <span className="text-[9px] font-black text-blue-600 uppercase tracking-[0.4em]">Official Partners</span>
+        {/* --- MATCHING CENTERED AMBER HEADER --- */}
+        <div className="flex flex-col items-center text-center mb-20 relative px-6">
+          <div className="relative">
+            <h2 className="text-4xl md:text-5xl font-black leading-none tracking-tighter uppercase inline-block relative z-10">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500">
+                Official Partners
+              </span>
+            </h2>
           </div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[0.85] tracking-tight flex flex-col items-center">
-            <span className="capitalize">Trusted</span>
-            <span className="italic text-blue-600 capitalize">Partnerships.</span>
-          </h2>
-          <p className="mt-8 text-slate-500 text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
-            We work with the biggest names in the industry to bring you the highest quality printing tools and reliable equipment.
+          <p className="mt-6 text-slate-500 text-sm md:text-base font-medium max-w-xl leading-relaxed mx-auto px-6">
+            We directly collaborate with global leaders to provide authentic hardware and genuine supplies.
           </p>
         </div>
 
-        {/* --- BRAND MARQUEE --- */}
-        <div className="relative w-full overflow-hidden border-t border-b border-slate-100 py-16">
-          <div className="animate-marquee-slow flex items-center gap-0 whitespace-nowrap">
+        {/* --- INFINITE CIRCULAR MARQUEE --- */}
+        <div className="relative w-full overflow-hidden py-10 group/marquee">
+          <div className="flex animate-marquee-brands whitespace-nowrap gap-12 md:gap-20 items-center hover:[animation-play-state:paused]">
             {marqueeBrands.map((brand, i) => (
               <Link 
                 key={`${brand.id}-${i}`}
                 to={`/shop?brand=${encodeURIComponent(brand.name)}`}
-                className="group border-r border-slate-100 px-16 first:border-l last:border-r"
+                className="inline-flex flex-col items-center shrink-0 group transition-transform duration-500 hover:scale-110"
               >
-                <div className="flex flex-col items-center gap-6 transition-all duration-300 group-hover:translate-y-[-5px]">
-                  <div className="h-16 w-32 flex items-center justify-center">
+                {/* Circular Node */}
+                <div className="relative mb-4">
+                  <div className="h-28 w-28 md:h-36 md:w-36 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center p-6 md:p-8 transition-all duration-500 group-hover:border-indigo-600 group-hover:bg-white shadow-sm overflow-hidden">
                     <img 
                       src={getBrandLogo(brand)} 
                       alt={brand.name} 
-                      className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" 
+                      className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" 
                     />
                   </div>
-                  <span className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] group-hover:text-blue-600 transition-colors">
-                    {brand.name}
-                  </span>
+                  
+                  {/* Small Hover Badge */}
+                  <div className="absolute -top-1 -right-1 h-8 w-8 bg-indigo-600 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-0 group-hover:scale-100">
+                     <ArrowUpRight size={14} />
+                  </div>
                 </div>
+
+                {/* Brand Name */}
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] group-hover:text-indigo-950 transition-colors">
+                  {brand.name}
+                </span>
               </Link>
             ))}
           </div>
+
+          {/* Fade Overlays for cinematic feel */}
+          <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
         </div>
 
       </div>
 
       <style>{`
-        .animate-marquee-slow {
-          animation: marquee 40s linear infinite;
+        .animate-marquee-brands {
+          animation: marquee-scroll 60s linear infinite;
         }
-        @keyframes marquee {
+        @keyframes marquee-scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }

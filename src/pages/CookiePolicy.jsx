@@ -7,10 +7,12 @@ export default function CookiePolicy() {
     <PolicyLayout
       title="Cookie Policy"
       subtitle="This Cookie Policy explains how we use cookies and similar technologies."
-      lastUpdated="February 23, 2026"
+      lastUpdated="March 12, 2026"
     >
       <p className="lead">
-        This Cookie Policy explains how myprinterman  ("Company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://myprinterman.com/">https://myprinterman.com/</a>
+        This Cookie Policy explains how PrinterPrime
+ 
+   ("Company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://printerprime.shop/">https://printerprime.shop/</a>
       </p>
       <p>
         This Cookie Policy should be read together with our <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-and-conditions">Terms and Conditions</Link>.
@@ -138,8 +140,8 @@ export default function CookiePolicy() {
         We do not sell personal information. If cookies are considered “sharing” under certain US state privacy laws (such as targeted advertising), you may exercise your rights by:
       </p>
       <ul>
-        <li>Emailing: <a href="mailto:info@myprinterman.com">info@myprinterman.com</a></li>
-        <li>Visiting: <Link to="/contact">https://myprinterman.com/contact</Link></li>
+        <li>Emailing: <a href="mailto:info@printerprime.shop">info@printerprime.shop</a></li>
+        <li>Visiting: <Link to="/contact">https://printerprime.shop/contact</Link></li>
       </ul>
 
       <h2>9. CHILDREN’S PRIVACY</h2>
@@ -155,12 +157,12 @@ export default function CookiePolicy() {
       <p>If you have any questions regarding this Cookie Policy, please contact:</p>
       <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-2 uppercase tracking-tighter">
-          <p className="text-slate-900 font-black">My PrinterMan</p>
+          <p className="text-slate-900 font-black">Printer Prime</p>
           <p></p>
-          <p>4664 Cleveland Ave</p>
-          <p>Columbus, OH 43231</p>
+          <p>256 NE Elm St</p>
+          <p>Billings, MO 65610</p>
           <p>United States</p>
-          <p className="pt-4 text-blue-600 font-black lowercase">info@myprinterman.com</p>
+          <p className="pt-4 text-blue-600 font-black lowercase">info@printerprime.shop</p>
         </address>
       </div>
     </PolicyLayout>

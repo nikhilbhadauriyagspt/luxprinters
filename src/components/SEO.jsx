@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export default function SEO({ title, description, keywords, schemaType = "Website" }) {
   useEffect(() => {
     // Update Title
-    const baseTitle = "myprinterman";
+    const baseTitle = "MyPrinterMan";
     const fullTitle = title ? `${title} | ${baseTitle}` : baseTitle;
     document.title = fullTitle;
 
@@ -44,16 +44,16 @@ export default function SEO({ title, description, keywords, schemaType = "Websit
     const schemaData = {
       "@context": "https://schema.org",
       "@type": schemaType === "Product" ? "Product" : "Organization",
-      "name": "myprinterman",
-      "url": "https://myprinterman.com",
-      "logo": "https://myprinterman.com/logo/myprinterman.png",
+      "name": "MyPrinterMan",
+      "url": "https://printerprime.shop",
+      "logo": "https://printerprime.shop/logo/MYPRINTERMAN.png",
       "description": finalDesc,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "4664 Cleveland Ave",
-        "addressLocality": "Columbus",
-        "addressRegion": "OH",
-        "postalCode": "43231",
+        "streetAddress": "256 NE Elm St",
+        "addressLocality": "Billings",
+        "addressRegion": "MO",
+        "postalCode": "65610",
         "addressCountry": "US"
       },
       "contactPoint": {
@@ -68,5 +68,3 @@ export default function SEO({ title, description, keywords, schemaType = "Websit
 
   return null;
 }
-
-

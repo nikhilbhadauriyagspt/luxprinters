@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Heart, Check, ShoppingBag, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Heart, Check, ShoppingBag, ArrowUpRight, Plus } from "lucide-react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { Link } from "react-router-dom";
@@ -33,32 +33,25 @@ export default function BestSellers({ products = [] }) {
     <section className="px-6 md:px-10 lg:px-16 py-20 lg:py-24 bg-white font-urbanist relative overflow-hidden">
       
       <div className="max-w-[1920px] mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-10">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="h-[1px] w-4 bg-blue-600 animate-pulse" />
-              <span className="text-[9px] font-black text-blue-600 uppercase tracking-[0.4em]">Most Popular</span>
-            </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[0.85] tracking-tight flex flex-col">
-              <span className="capitalize">Best</span>
-              <span className="italic text-blue-600 capitalize">Sellers.</span>
+        
+        {/* --- HEADER --- */}
+        <div className="flex flex-col items-center text-center mb-20 relative">
+          <div className="relative">
+            <h2 className="text-4xl md:text-5xl font-black leading-none tracking-tighter uppercase inline-block relative z-10">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500">
+                Top Rated Best Sellers
+              </span>
             </h2>
           </div>
-          
-          <div className="flex items-center gap-2 mb-2">
-             <button className="bs-prev h-12 w-12 bg-white border border-slate-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 group shadow-sm cursor-pointer">
-                <ChevronLeft size={20} />
-             </button>
-             <button className="bs-next h-12 w-12 bg-white border border-slate-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 group shadow-sm cursor-pointer">
-                <ChevronRight size={20} />
-             </button>
-          </div>
+          <p className="mt-6 text-slate-500 text-sm md:text-base font-medium max-w-xl leading-relaxed mx-auto px-6">
+            Discover our most trusted printers and supplies as rated by industry professionals.
+          </p>
         </div>
 
-        <div className="relative">
+        <div className="relative group/carousel">
           <Swiper
             modules={[Navigation, Autoplay]}
-            spaceBetween={0}
+            spaceBetween={24}
             slidesPerView={1.2}
             autoplay={{ delay: 4500, disableOnInteraction: false }}
             navigation={{ prevEl: '.bs-prev', nextEl: '.bs-next' }}
@@ -68,20 +61,20 @@ export default function BestSellers({ products = [] }) {
               1440: { slidesPerView: 4 },
               1600: { slidesPerView: 5 },
             }}
-            className="!overflow-visible border-t border-l border-slate-100"
+            className="!overflow-visible"
           >
             {products.slice(0, 15).map((p) => (
-                <SwiperSlide key={p.id} className="h-full">
+                <SwiperSlide key={p.id}>
                   <div 
-                    className="relative bg-white border-r border-b border-slate-100 transition-all duration-300 h-[480px] flex flex-col group overflow-hidden hover:bg-slate-50"
+                    className="relative bg-white border border-slate-100 rounded-[2.5rem] p-6 transition-all duration-500 flex flex-col group hover:border-indigo-600 hover:shadow-2xl hover:shadow-indigo-500/5 h-[520px]"
                   >
-                    {/* Image */}
-                    <div className="relative h-[260px] flex items-center justify-center p-10">
+                    {/* Image Area with Pure White Background */}
+                    <div className="relative aspect-square rounded-[2rem] bg-white border border-slate-50 flex items-center justify-center p-8 overflow-hidden mb-8 transition-all duration-500 group-hover:border-indigo-100 group-hover:bg-slate-50/30">
                       <button 
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleWishlist(p); }}
                         className={cn(
-                          "absolute top-6 right-6 z-20 h-10 w-10 bg-white border border-slate-100 flex items-center justify-center transition-all duration-300 shadow-sm",
-                          isInWishlist(p.id) ? "text-red-500" : "text-slate-300 hover:text-red-500"
+                          "absolute top-4 right-4 z-20 h-10 w-10 bg-white rounded-full flex items-center justify-center transition-all duration-300 shadow-sm border border-slate-50",
+                          isInWishlist(p.id) ? "text-red-500 scale-110" : "text-slate-300 hover:text-red-500 hover:scale-110"
                         )}
                       >
                         <Heart size={18} fill={isInWishlist(p.id) ? "currentColor" : "none"} />
@@ -89,49 +82,63 @@ export default function BestSellers({ products = [] }) {
 
                       <img 
                         src={getImagePath(p.images)} 
-                        className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110" 
+                        className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-110" 
                         alt={p.name} 
                       />
                     </div>
 
-                    {/* Content */}
-                    <div className="flex-1 p-8 border-t border-slate-50 flex flex-col">
-                      <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-2">
-                        {p.brand_name || 'Authentic'}
-                      </span>
+                    {/* Content Details */}
+                    <div className="flex-1 flex flex-col">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest px-3 py-1 bg-indigo-50 rounded-full">
+                          {p.brand_name || 'AUTHENTIC'}
+                        </span>
+                      </div>
 
                       <Link to={`/product/${p.slug}`} className="flex-1">
-                        <h3 className="font-black text-slate-900 text-lg capitalize tracking-tight line-clamp-2 leading-tight group-hover:text-blue-600 transition-colors">
+                        <h3 className="font-black text-indigo-950 text-lg md:text-xl capitalize tracking-tight line-clamp-2 leading-[1.1] group-hover:text-indigo-600 transition-colors">
                           {p.name.toLowerCase()}
                         </h3>
                       </Link>
 
-                      <div className="mt-6 flex items-center justify-between">
+                      <div className="mt-8 flex items-center justify-between pt-6 border-t border-slate-100">
                         <div className="flex flex-col">
-                           <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Office Choice</span>
-                           <span className="text-2xl font-black text-slate-900 tracking-tighter">${p.price}</span>
+                           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Price</span>
+                           <span className="text-2xl font-black text-indigo-950 tracking-tighter">${p.price}</span>
                         </div>
 
                         <button 
                           onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleAddToCart(p); }}
                           disabled={addedItems[p.id]}
                           className={cn(
-                            "h-12 w-12 flex items-center justify-center transition-all duration-300",
+                            "h-14 w-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-lg active:scale-90 z-30 relative",
                             addedItems[p.id] 
-                              ? "bg-emerald-500 text-white" 
-                              : "bg-slate-900 text-white hover:bg-blue-600"
+                              ? "bg-emerald-500 text-white shadow-emerald-500/20" 
+                              : "bg-indigo-950 text-white hover:bg-amber-500 hover:text-indigo-950 shadow-indigo-950/20 hover:shadow-amber-500/30"
                           )}
                         >
-                          {addedItems[p.id] ? <Check size={20} strokeWidth={3} /> : <ShoppingBag size={20} />}
+                          {addedItems[p.id] ? <Check size={24} strokeWidth={3} /> : <Plus size={24} strokeWidth={3} />}
                         </button>
                       </div>
                     </div>
 
-                    <Link to={`/product/${p.slug}`} className="absolute top-0 left-0 w-full h-full z-0" />
+                    <Link to={`/product/${p.slug}`} className="absolute top-0 left-0 w-full h-full z-0 rounded-[2.5rem]" />
                   </div>
                 </SwiperSlide>
               ))}
           </Swiper>
+
+          {/* Controls */}
+          <div className="absolute top-1/2 -left-8 -translate-y-1/2 z-30 pointer-events-none hidden xl:block transition-all duration-500 opacity-0 group-hover/carousel:opacity-100">
+             <button className="bs-prev h-16 w-16 bg-white border border-slate-100 rounded-full flex items-center justify-center text-indigo-950 hover:bg-indigo-950 hover:text-white transition-all duration-300 pointer-events-auto shadow-xl cursor-pointer active:scale-90">
+                <ChevronLeft size={32} />
+             </button>
+          </div>
+          <div className="absolute top-1/2 -right-8 -translate-y-1/2 z-30 pointer-events-none hidden xl:block transition-all duration-500 opacity-0 group-hover/carousel:opacity-100">
+             <button className="bs-next h-16 w-16 bg-white border border-slate-100 rounded-full flex items-center justify-center text-indigo-950 hover:bg-indigo-950 hover:text-white transition-all duration-300 pointer-events-auto shadow-xl cursor-pointer active:scale-90">
+                <ChevronRight size={32} />
+             </button>
+          </div>
         </div>
       </div>
     </section>
