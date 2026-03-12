@@ -3,7 +3,6 @@ import SEO from "@/components/SEO";
 import Features from "@/components/Features";
 import Collections from "@/components/Collections";
 import ShopByCategory from "@/components/ShopByCategory";
-import BrandShowcase from "@/components/BrandShowcase";
 import ProductGrid from "@/components/ProductGrid";
 import CategorySlider from "@/components/CategorySlider";
 import BestSellers from "@/components/BestSellers";
@@ -100,10 +99,10 @@ export default function Home() {
        <Collections />
       <CategorySlider 
         title="Office Printers" 
-        subtitle="Laser & Inkjet" 
+        subtitle="Precision printing solutions for every workspace." 
         products={data.printers} 
       />
-       <BrandShowcase brands={data.brands} />
+       
       {/* --- MINIMAL CONTACT CTA BANNER --- */}
       <section className="py-20 bg-white font-sans px-6">
         <div className="max-w-[1920px] mx-auto">
