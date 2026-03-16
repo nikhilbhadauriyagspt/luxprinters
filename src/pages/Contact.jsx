@@ -82,7 +82,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-1">Our Location</p>
-                      <p className="text-lg font-bold text-zinc-900 leading-snug">11872 Sunrise Valley Dr, <br/> Reston, VA 20191, USA</p>
+                      <p className="text-lg font-bold text-zinc-900 leading-snug">414 SW Adams St, <br/> Peoria, IL 61602, USA</p>
                     </div>
                   </div>
                </div>

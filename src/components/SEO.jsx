@@ -50,10 +50,10 @@ export default function SEO({ title, description, keywords, schemaType = "Websit
       "description": finalDesc,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "11872 Sunrise Valley Dr",
-        "addressLocality": "Reston",
-        "addressRegion": "VA",
-        "postalCode": "20191",
+        "streetAddress": "414 SW Adams St",
+        "addressLocality": "Peoria",
+        "addressRegion": "IL",
+        "postalCode": "61602",
         "addressCountry": "US"
       },
       "contactPoint": {

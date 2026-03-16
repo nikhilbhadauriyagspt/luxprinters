@@ -12,7 +12,7 @@ export default function TermsAndConditions() {
       <p>
         We are PrinterBrother
  
-  ("Company," "we," "us," "our"), a company registered in Virginia, United States at 11872 Sunrise Valley Dr, Reston, VA 20191, USA.
+  ("Company," "we," "us," "our"), a company registered in Virginia, United States at 414 SW Adams St, Peoria, IL 61602, USA.
       </p>
       <p>
         We operate the website <a href="http://dashprintershop.shop/">http://dashprintershop.shop/</a> (the "Site"), as well as any other related products and services that refer or link to these legal terms (the "Legal Terms") (collectively, the "Services").
@@ -23,7 +23,7 @@ export default function TermsAndConditions() {
   is your trusted destination for authentic, high-performance printers and printing accessories from HP and other leading printing brands.
       </p>
       <p>
-        You can contact us by email at <a href="mailto:info@dashprintershop.shop">info@dashprintershop.shop</a>, or by mail to 11872 Sunrise Valley Dr, Reston, VA 20191, USA.
+        You can contact us by email at <a href="mailto:info@dashprintershop.shop">info@dashprintershop.shop</a>, or by mail to 414 SW Adams St, Peoria, IL 61602, USA.
       </p>
       <p>
         These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you"), and PrinterBrother
@@ -207,8 +207,8 @@ export default function TermsAndConditions() {
       <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-2 uppercase tracking-tighter">
           <p className="text-slate-900 font-black">PrinterBrother </p>
-          <p>11872 Sunrise Valley Dr</p>
-          <p>Reston, VA 20191</p>
+          <p>414 SW Adams St</p>
+          <p>Peoria, IL 61602</p>
           <p>United States</p>
           <p className="pt-4 text-blue-600 font-black lowercase">Email: info@dashprintershop.shop</p>
         </address>

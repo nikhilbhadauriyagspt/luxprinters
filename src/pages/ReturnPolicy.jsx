@@ -20,8 +20,8 @@ export default function ReturnPolicy() {
         <p className="font-medium text-slate-700 mb-4 italic">Place the item securely in its original packaging and include your proof of purchase, then mail your return to the following address:</p>
         <address className="not-italic text-slate-900 font-black leading-relaxed uppercase tracking-tighter">
                      PrinterBrother <br />
-                     11872 Sunrise Valley Dr<br />
-                     Reston, VA 20191<br />          United States
+                     414 SW Adams St<br />
+                     Peoria, IL 61602<br />          United States
         </address>
         <p className="mt-6 text-blue-600 font-black uppercase text-xs tracking-widest">
           Return shipping charges will be paid or reimbursed by us.

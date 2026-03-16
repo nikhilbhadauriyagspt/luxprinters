@@ -147,7 +147,7 @@ export default function Footer() {
                 <div className="h-10 w-10 shrink-0 rounded-xl bg-zinc-50 flex items-center justify-center text-[#0ea5e9] group-hover:bg-[#0ea5e9] group-hover:text-white transition-all border border-zinc-100"><MapPin size={18} /></div>
                 <div className="space-y-1">
                   <p className="text-[10px] font-black uppercase tracking-widest text-zinc-400">Location</p>
-                  <p className="text-[12px] font-bold text-zinc-600 leading-tight">11872 Sunrise Valley Dr, Reston, VA 20191, USA</p>
+                  <p className="text-[12px] font-bold text-zinc-600 leading-tight">414 SW Adams St, Peoria, IL 61602, USA</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 group">

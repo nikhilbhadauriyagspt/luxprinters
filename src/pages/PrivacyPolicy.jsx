@@ -287,8 +287,8 @@ export default function PrivacyPolicy() {
       <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed">
                      DashPrinterShop <br />          <br />
-                     11872 Sunrise Valley Dr<br />
-                     Reston, VA 20191<br />          United States
+                     414 SW Adams St<br />
+                     Peoria, IL 61602<br />          United States
         </address>
       </div>
 

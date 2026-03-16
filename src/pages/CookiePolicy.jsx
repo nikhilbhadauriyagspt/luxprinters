@@ -159,8 +159,8 @@ export default function CookiePolicy() {
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-2 uppercase tracking-tighter">
           <p className="text-slate-900 font-black">DashPrinterShop</p>
           <p></p>
-          <p>11872 Sunrise Valley Dr</p>
-          <p>Reston, VA 20191</p>
+          <p>414 SW Adams St</p>
+          <p>Peoria, IL 61602</p>
           <p>United States</p>
           <p className="pt-4 text-blue-600 font-black lowercase">info@dashprintershop.shop</p>
         </address>
