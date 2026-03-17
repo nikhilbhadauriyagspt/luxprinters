@@ -171,7 +171,12 @@ Your one-stop shop for high-quality printers and reliable printing solutions. Pe
              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-6" />
           </div>
         </div>
-
+  {/* --- DISCLAIMER --- */}
+        <div className="mt-12 pt-8 text-center border-t border-slate-100">
+          <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em]">
+            Disclaimer - For Informational only. No software installation or distribution.
+          </p>
+        </div>
       </div>
     </footer>
   );

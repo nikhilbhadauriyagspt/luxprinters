@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import API_BASE_URL from "../config";
 import { cn } from "../lib/utils";
+import bannerImg from "../assets/bannerr/banner6.jpg";
 
 export default function Home() {
   const [data, setData] = useState({
@@ -104,46 +105,48 @@ export default function Home() {
         products={data.printers} 
       />
        
-      {/* --- MINIMAL CONTACT CTA SECTION --- */}
-      <section className="py-12 bg-white font-jakarta">
-        <div className="max-w-[1600px] mx-auto px-4 md:px-10">
-          <div className="relative rounded-sm p-10 md:p-16 text-center overflow-hidden min-h-[300px] flex items-center justify-center border border-gray-100 shadow-md">
-            {/* Background Image with Overlay */}
-            <img 
-              src="/src/assets/bannerr/banner6.jpg" 
-              alt="Support" 
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-white/90" />
+     {/* --- MINIMAL CONTACT CTA SECTION --- */}
+<section className="py-12 bg-white font-jakarta">
+  <div className="max-w-[1600px] mx-auto px-4 md:px-10">
+    <div className="relative rounded-sm p-10 md:p-16 text-center overflow-hidden min-h-[300px] flex items-center justify-center border border-gray-100 shadow-md">
+      
+      {/* Background Image with Overlay */}
+      <img 
+        src={bannerImg}
+        alt="" 
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-white/90" />
 
-            <div className="max-w-xl mx-auto space-y-6 relative z-10">
-              <div className="space-y-3">
-                <h2 className="text-2xl md:text-3xl font-bold text-black leading-tight">
-                  Need expert help for <br /> <span className="text-blue-600 font-medium">your business?</span>
-                </h2>
-                <p className="text-gray-500 text-sm md:text-base font-normal max-w-sm mx-auto">
-                  Find the perfect printing setup with our professional advice. We are here to help you 24/7.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap justify-center gap-4 pt-2">
-                <Link
-                  to="/contact"
-                  className="bg-blue-600 hover:bg-black text-white px-8 py-3 rounded-sm font-bold text-sm transition-all duration-300"
-                >
-                  Contact An Expert
-                </Link>
-                <Link
-                  to="/faq"
-                  className="bg-gray-100 hover:bg-gray-200 text-black px-8 py-3 rounded-sm font-bold text-sm transition-all duration-300"
-                >
-                  View FAQ
-                </Link>
-              </div>
-            </div>
-          </div>
+      <div className="max-w-xl mx-auto space-y-6 relative z-10">
+        <div className="space-y-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-black leading-tight">
+            Need expert help for <br /> 
+            <span className="text-blue-600 font-medium">your business?</span>
+          </h2>
+          <p className="text-gray-500 text-sm md:text-base font-normal max-w-sm mx-auto">
+            Find the perfect printing setup with our professional advice. We are here to help you 24/7.
+          </p>
         </div>
-      </section>
+
+        <div className="flex flex-wrap justify-center gap-4 pt-2">
+          <Link
+            to="/contact"
+            className="bg-blue-600 hover:bg-black text-white px-8 py-3 rounded-sm font-bold text-sm transition-all duration-300"
+          >
+            Contact An Expert
+          </Link>
+          <Link
+            to="/faq"
+            className="bg-gray-100 hover:bg-gray-200 text-black px-8 py-3 rounded-sm font-bold text-sm transition-all duration-300"
+          >
+            View FAQ
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
     
   );
