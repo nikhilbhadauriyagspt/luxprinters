@@ -7,12 +7,12 @@ export default function CookiePolicy() {
     <PolicyLayout
       title="Cookie Policy"
       subtitle="This Cookie Policy explains how we use cookies and similar technologies."
-      lastUpdated="March 19, 2026"
+      lastUpdated="March 20, 2026"
     >
       <p className="lead">
-        This Cookie Policy explains how Mike's Printer
+        This Cookie Policy explains how Yankee's Printer
  
-   ("Company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://Mike's Printer.shop/">https://Mike's Printer.shop/</a>
+   ("Company," "we," "us," or "our") uses cookies and similar technologies when you visit our website: <a href="https://Yankee's Printer.shop/">https://Yankee's Printer.shop/</a>
       </p>
       <p>
         This Cookie Policy should be read together with our <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/terms-and-conditions">Terms and Conditions</Link>.
@@ -140,8 +140,8 @@ export default function CookiePolicy() {
         We do not sell personal information. If cookies are considered â€œsharingâ€ under certain US state privacy laws (such as targeted advertising), you may exercise your rights by:
       </p>
       <ul>
-        <li>Emailing: <a href="mailto:info@mikesprinter.shop">info@mikesprinter.shop</a></li>
-        <li>Visiting: <Link to="/contact">https://Mike's Printer.shop/contact</Link></li>
+        <li>Emailing: <a href="mailto:info@yankeesprinter.shop">info@yankeesprinter.shop</a></li>
+        <li>Visiting: <Link to="/contact">https://Yankee's Printer.shop/contact</Link></li>
       </ul>
 
       <h2>9. CHILDRENâ€™S PRIVACY</h2>
@@ -157,11 +157,11 @@ export default function CookiePolicy() {
       <p>If you have any questions regarding this Cookie Policy, please contact:</p>
       <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 my-8 not-prose">
         <address className="not-italic text-slate-700 font-bold leading-relaxed space-y-2 uppercase tracking-tighter">
-          <p className="text-slate-900 font-black">Mike's Printer</p>
-          <p>4100 University Ave, West Des Moines, IA 50266, USA</p>
+          <p className="text-slate-900 font-black">Yankee's Printer</p>
+          <p>Saint Anthony Main Minneapolis, MN, USA 50266, USA</p>
           
           
-          <p className="pt-4 text-blue-600 font-black lowercase">info@mikesprinter.shop</p>
+          <p className="pt-4 text-blue-600 font-black lowercase">info@yankeesprinter.shop</p>
         </address>
       </div>
     </PolicyLayout>

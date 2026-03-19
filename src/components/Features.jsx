@@ -3,52 +3,55 @@ import { motion } from 'framer-motion';
 
 const features = [
   {
-    icon: <Truck size={20} strokeWidth={1.5} className="text-black" />,
-    title: "Complimentary Shipping",
-    desc: "On all domestic orders"
+    icon: <Truck size={22} strokeWidth={1.2} />,
+    title: "Global Delivery",
+    desc: "Seamless shipping to your doorstep"
   },
   {
-    icon: <RotateCcw size={20} strokeWidth={1.5} className="text-black" />,
-    title: "30-Day Returns",
-    desc: "Hassle-free guarantee"
+    icon: <RotateCcw size={22} strokeWidth={1.2} />,
+    title: "Extended Returns",
+    desc: "Confident 30-day trial period"
   },
   {
-    icon: <Headset size={20} strokeWidth={1.5} className="text-black" />,
-    title: "Dedicated Support",
-    desc: "24/7 expert assistance"
+    icon: <Headset size={22} strokeWidth={1.2} />,
+    title: "Expert Assistance",
+    desc: "24/7 dedicated support team"
   },
   {
-    icon: <ShieldCheck size={20} strokeWidth={1.5} className="text-black" />,
-    title: "Secure Checkout",
-    desc: "Encrypted payments"
+    icon: <ShieldCheck size={22} strokeWidth={1.2} />,
+    title: "Secure Purchase",
+    desc: "Verified encrypted transactions"
   }
 ];
 
 export default function Features() {
   return (
-    <section className="relative z-20 -mt-6 md:-mt-10 pb-16 font-jakarta">
-      <div className="max-w-[1920px] mx-auto px-6 lg:px-12">
-        <div className="bg-white border border-gray-100 shadow-[0_15px_40px_rgba(0,0,0,0.04)] rounded-sm overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-50">
+    <section className="relative z-30 -mt-8 md:-mt-10 pb-16 font-jakarta">
+      <div className="w-full">
+        <div className="bg-white border-y border-[#333330]/5 shadow-[0_20px_50px_rgba(0,0,0,0.02)] rounded-none overflow-hidden backdrop-blur-md bg-white/95">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#333330]/5">
             {features.map((item, index) => (
               <motion.div 
                 key={index}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="flex items-center gap-5 p-8 lg:p-10 group hover:bg-gray-50 transition-colors duration-300"
+                transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="flex items-center justify-center gap-6 p-10 lg:p-14 group hover:bg-[#F1F1E9]/30 transition-all duration-500"
               >
-                <div className="h-12 w-12 bg-gray-50 flex items-center justify-center rounded-full shrink-0 group-hover:bg-white group-hover:shadow-sm transition-all duration-300">
-                  <div className="group-hover:scale-110 transition-transform duration-300">
+                {/* Icon Container */}
+                <div className="h-14 w-14 border border-[#333330]/10 flex items-center justify-center rounded-xl bg-white group-hover:bg-[#333330] group-hover:text-white transition-all duration-500 shrink-0">
+                  <div className="group-hover:scale-110 transition-transform duration-500 text-[#333330] group-hover:text-white">
                     {item.icon}
                   </div>
                 </div>
-                <div className="space-y-0.5">
-                  <h4 className="text-[12px] font-bold text-black uppercase">
+
+                {/* Text Content */}
+                <div className="space-y-1">
+                  <h4 className="text-[12px] font-bold text-[#333330] tracking-wide uppercase">
                     {item.title}
                   </h4>
-                  <p className="text-[11px] text-gray-400 font-medium whitespace-nowrap">
+                  <p className="text-[11px] text-[#666660] font-light whitespace-nowrap">
                     {item.desc}
                   </p>
                 </div>

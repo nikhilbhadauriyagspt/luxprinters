@@ -59,35 +59,35 @@ export default function Orders() {
 
   if (!user && orders.length === 0 && !loading) {
     return (
-      <div className="min-h-screen bg-[#FBFBFA] pt-40 pb-20 font-jakarta px-6 flex flex-col items-center justify-center text-black">
-        <SEO title="Track Order | Mike's Printer" />
+      <div className="min-h-screen bg-[#F8F8F6] pt-40 pb-20 font-jakarta px-6 flex flex-col items-center justify-center text-[#333330]">
+        <SEO title="Track Order | Yankee's Printer" />
         <div className="max-w-[440px] w-full">
           <div className="text-center mb-12 space-y-4">
-            <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400 block">Status Check</motion.span>
-            <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-light uppercase tracking-tight">Track <span className="font-semibold italic">Order</span></motion.h1>
+            <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#96968B] block">Status Check</motion.span>
+            <motion.h1 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-light uppercase tracking-tight text-black">Track <span className="font-medium italic text-[#96968B]">Order</span></motion.h1>
           </div>
           
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="bg-white p-8 md:p-12 border border-gray-100 shadow-[0_30px_60px_rgba(0,0,0,0.03)] rounded-sm">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="bg-white p-8 md:p-12 border border-[#333330]/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.03)] rounded-[40px]">
             <form onSubmit={handleGuestSearch} className="space-y-8">
-              <div className="space-y-2 group">
-                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Email Address</label>
+              <div className="space-y-3 group">
+                <label className="text-[10px] font-bold text-[#333330]/40 uppercase tracking-[0.2em] pl-1">Email Address</label>
                 <div className="relative">
-                  <Search className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-black transition-colors" size={16} strokeWidth={1.5} />
+                  <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-[#333330]/20 group-focus-within:text-[#96968B] transition-colors" size={16} strokeWidth={1.5} />
                   <input 
-                    type="email" required placeholder="YOUR EMAIL" value={guestEmail}
+                    type="email" required placeholder="ENTER EMAIL ADDRESS" value={guestEmail}
                     onChange={(e) => setGuestEmail(e.target.value)}
-                    className="w-full h-12 pl-8 pr-4 bg-transparent border-b border-gray-100 focus:border-black outline-none text-[12px] font-medium transition-all placeholder:text-gray-200 uppercase tracking-widest"
+                    className="w-full h-14 pl-14 pr-4 bg-[#FBFBFA] border border-[#333330]/5 rounded-2xl focus:border-[#96968B] outline-none text-[13px] font-medium transition-all placeholder:text-[#333330]/10 uppercase tracking-widest"
                   />
                 </div>
               </div>
-              <button className="group relative w-full inline-flex items-center justify-center gap-4 bg-black text-white h-14 rounded-full overflow-hidden transition-all duration-500 hover:shadow-xl active:scale-95">
+              <button className="group relative w-full inline-flex items-center justify-center gap-4 bg-black text-white h-14 rounded-full overflow-hidden transition-all duration-500 shadow-xl active:scale-95">
                 <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.3em]">Find Order</span>
                 <ArrowRight size={16} className="relative z-10 transition-transform duration-500 group-hover:translate-x-1" />
-                <div className="absolute inset-0 bg-gray-800 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-[#333330] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               </button>
             </form>
-            <div className="mt-10 pt-8 border-t border-gray-50 text-center">
-              <Link to="/login" className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] hover:text-black transition-colors">Sign in for full history</Link>
+            <div className="mt-10 pt-8 border-t border-[#333330]/5 text-center">
+              <Link to="/login" className="text-[10px] font-bold text-[#333330]/40 uppercase tracking-[0.2em] hover:text-black transition-colors">Sign in for full history</Link>
             </div>
           </motion.div>
         </div>
@@ -96,30 +96,47 @@ export default function Orders() {
   }
 
   return (
-    <div className="min-h-screen bg-white font-jakarta text-black overflow-x-hidden">
-      <SEO title="Order History | Mike's Printer" />
+    <div className="min-h-screen bg-[#F8F8F6] font-jakarta text-[#333330] overflow-x-hidden">
+      <SEO title="Order History | Yankee's Printer" />
       
+      {/* --- BACKGROUND DESIGN --- */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute -top-[400px] -left-[400px] md:-top-[500px] md:-left-[500px] w-[1000px] h-[1000px] bg-[#F1F1E9] rounded-full border border-[#333330]/[0.03] shadow-[inset_0_0_80px_rgba(0,0,0,0.01)]"
+        />
+      </div>
+
       {/* --- PREMIUM HERO HEADER --- */}
-      <section className="bg-[#FBFBFA] border-b border-gray-100 py-20 md:py-28 px-6 lg:px-12">
-        <div className="max-w-[1920px] mx-auto text-center space-y-6">
-          <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-[11px] font-bold tracking-[0.4em] uppercase text-gray-400 block">Customer Portal</motion.span>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-4xl md:text-6xl lg:text-7xl font-light uppercase tracking-tight">My <span className="font-semibold italic">Orders</span></motion.h1>
-          <motion.div initial={{ opacity: 0, scaleX: 0 }} animate={{ opacity: 1, scaleX: 1 }} transition={{ delay: 0.3, duration: 0.8 }} className="w-20 h-[1px] bg-black mx-auto mt-8" />
+      <section className="relative pt-32 pb-16 px-6 lg:px-20 text-center">
+        <div className="max-w-[1920px] mx-auto space-y-8">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-center gap-3">
+            <span className="w-8 h-[1px] bg-[#96968B]"></span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#333330]/40">Customer Portal</span>
+            <span className="w-8 h-[1px] bg-[#96968B]"></span>
+          </motion.div>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-5xl md:text-7xl font-light uppercase tracking-tight text-black leading-none">
+            My <span className="font-medium italic text-[#96968B]">Orders</span>
+          </motion.h1>
         </div>
       </section>
 
-      <div className="max-w-[1920px] mx-auto px-6 lg:px-12 py-20 md:py-32">
+      <div className="max-w-[1920px] mx-auto px-6 lg:px-20 py-12 md:py-20 relative z-10">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-40">
-            <Loader2 className="animate-spin h-8 w-8 text-gray-200 mb-6" strokeWidth={1.5} />
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-300">Syncing History...</p>
+            <Loader2 className="animate-spin h-8 w-8 text-[#96968B] mb-6" strokeWidth={1.5} />
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#333330]/30">Syncing History...</p>
           </div>
         ) : orders.length === 0 ? (
-          <div className="text-center py-32 bg-[#FBFBFA] rounded-sm border border-gray-50">
-            <Package size={48} strokeWidth={1} className="mx-auto text-gray-200 mb-6" />
-            <h2 className="text-lg font-light uppercase tracking-widest">No orders found</h2>
-            <Link to="/shop" className="mt-10 bg-black text-white px-10 py-4 text-[11px] font-bold uppercase tracking-[0.2em] transition-all hover:bg-gray-800 inline-flex items-center gap-4 group">
-              Browse Shop <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          <div className="text-center py-32 bg-white rounded-[40px] border border-[#333330]/5">
+            <Package size={48} strokeWidth={1} className="mx-auto text-[#96968B]/20 mb-6" />
+            <h2 className="text-xl font-light uppercase tracking-widest text-black">No orders found</h2>
+            <Link to="/shop" className="group relative inline-flex items-center gap-6 bg-black text-white h-14 px-10 rounded-full mt-10 overflow-hidden transition-all duration-500 shadow-xl">
+              <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.2em]">Browse Catalog</span>
+              <ArrowRight size={16} className="relative z-10 transition-transform group-hover:translate-x-1" />
+              <div className="absolute inset-0 bg-[#333330] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </Link>
           </div>
         ) : (
@@ -127,56 +144,59 @@ export default function Orders() {
             {orders.map((order) => (
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                key={order.id} className="bg-white border border-gray-100 rounded-sm overflow-hidden group hover:border-black/10 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.03)]"
+                key={order.id} className="bg-white border border-[#333330]/5 rounded-[40px] overflow-hidden group hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.03)] transition-all duration-700"
               >
                 {/* Meta Header */}
-                <div className="p-6 md:p-10 border-b border-gray-50 flex flex-wrap items-center justify-between gap-8 bg-[#FBFBFA]/50">
-                  <div className="flex flex-wrap items-center gap-10 md:gap-16">
+                <div className="p-8 md:p-12 border-b border-[#333330]/5 flex flex-wrap items-center justify-between gap-8 bg-[#FBFBFA]">
+                  <div className="flex flex-wrap items-center gap-10 md:gap-20">
                     <div>
-                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Order Ref</p>
-                      <h3 className="text-sm font-bold text-black tracking-tight">#{order.order_code || order.id}</h3>
+                      <p className="text-[10px] font-bold text-[#333330]/40 uppercase tracking-widest mb-2">Order Ref</p>
+                      <h3 className="text-[15px] font-bold text-black tracking-tight uppercase">#{order.order_code || order.id}</h3>
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Date</p>
-                      <p className="text-sm font-medium text-black">{new Date(order.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
+                      <p className="text-[10px] font-bold text-[#333330]/40 uppercase tracking-widest mb-2">Date</p>
+                      <p className="text-[15px] font-medium text-black">{new Date(order.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Total</p>
-                      <p className="text-lg font-light text-black tracking-tight">${parseFloat(order.total_amount).toLocaleString()}</p>
+                      <p className="text-[10px] font-bold text-[#333330]/40 uppercase tracking-widest mb-2">Total</p>
+                      <p className="text-2xl font-light text-black tracking-tighter">${parseFloat(order.total_amount).toLocaleString()}</p>
                     </div>
                   </div>
 
                   <div className={cn(
-                    "px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] border",
-                    order.status === 'delivered' ? "bg-black text-white border-black" : "bg-white text-black border-gray-200"
+                    "px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border",
+                    order.status === 'delivered' ? "bg-black text-white border-black" : "bg-white text-black border-[#333330]/10"
                   )}>
                     {order.status}
                   </div>
                 </div>
 
                 {/* Items & Track */}
-                <div className="p-6 md:p-10 flex flex-col lg:flex-row gap-16">
-                  <div className="flex-1 space-y-8">
+                <div className="p-8 md:p-12 flex flex-col lg:flex-row gap-16 items-center">
+                  <div className="flex-1 w-full space-y-10">
                     {order.items && order.items.map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-8 group/item">
-                        <div className="h-20 w-20 bg-[#FBFBFA] rounded-sm border border-gray-50 flex items-center justify-center p-4 shrink-0 group-hover/item:bg-white transition-all overflow-hidden relative">
+                      <div key={idx} className="flex items-center gap-10 group/item">
+                        <div className="h-24 w-24 bg-[#FBFBFA] rounded-[24px] border border-[#333330]/5 flex items-center justify-center p-5 shrink-0 group-hover/item:bg-[#E5E5E0] transition-all duration-700 overflow-hidden relative">
                           <img src={getImagePath(item.images)} className="max-w-full max-h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover/item:scale-110" alt="" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="text-[13px] font-semibold text-black uppercase tracking-wide truncate mb-1">{item.product_name}</h4>
-                          <p className="text-[11px] font-medium text-gray-400 uppercase tracking-widest">Qty: {item.quantity} â€¢ ${parseFloat(item.price).toLocaleString()}</p>
+                          <h4 className="text-[15px] font-medium text-black uppercase tracking-tight truncate mb-1.5">{item.product_name}</h4>
+                          <p className="text-[11px] font-bold text-[#333330]/30 uppercase tracking-widest">Qty: {item.quantity} â€¢ ${parseFloat(item.price).toLocaleString()}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                   
-                  <div className="lg:w-[320px] shrink-0">
+                  <div className="lg:w-[320px] shrink-0 w-full">
                     <button 
                       onClick={() => setSelectedOrder(order)} 
-                      className="w-full h-14 bg-black text-white rounded-full flex items-center justify-center gap-4 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-gray-800 transition-all hover:shadow-xl active:scale-95 group"
+                      className="group relative w-full h-16 bg-black text-white rounded-full flex items-center justify-center gap-6 text-[11px] font-bold uppercase tracking-[0.3em] overflow-hidden transition-all duration-500 shadow-xl active:scale-95"
                     >
-                      Live Tracking
-                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      <span className="relative z-10 flex items-center gap-4">
+                        Live Tracking
+                        <ArrowRight size={18} className="transition-transform duration-500 group-hover:translate-x-2" />
+                      </span>
+                      <div className="absolute inset-0 bg-[#333330] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     </button>
                   </div>
                 </div>
@@ -185,54 +205,56 @@ export default function Orders() {
           </div>
         )}
 
-        {/* --- TRACKING MODAL --- */}
+        {/* --- TRACKING MODAL: GLASS CANVAS --- */}
         <AnimatePresence>
           {selectedOrder && (
             <>
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedOrder(null)} className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[1000]" />
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedOrder(null)} className="fixed inset-0 bg-black/10 backdrop-blur-sm z-[1000]" />
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95, y: '-45%', x: '-50%' }} 
                 animate={{ opacity: 1, scale: 1, y: '-50%', x: '-50%' }} 
                 exit={{ opacity: 0, scale: 0.95, y: '-45%', x: '-50%' }} 
-                className="fixed top-1/2 left-1/2 w-full max-w-lg bg-white z-[1001] shadow-[0_40px_100px_rgba(0,0,0,0.1)] rounded-sm p-10 md:p-16 font-jakarta border border-gray-100"
+                className="fixed top-1/2 left-1/2 w-full max-w-xl bg-white/95 backdrop-blur-md z-[1001] shadow-[0_60px_120px_-20px_rgba(0,0,0,0.1)] rounded-[60px] p-10 md:p-20 font-jakarta border border-white/50"
               >
-                <div className="flex items-center justify-between mb-12">
+                <div className="flex items-center justify-between mb-16">
                   <div className="space-y-1">
-                     <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400">Order Journey</span>
-                     <h2 className="text-2xl font-light uppercase tracking-tight text-black">Live <span className="font-semibold italic">Status</span></h2>
+                     <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#96968B]">Order Journey</span>
+                     <h2 className="text-3xl font-light uppercase tracking-tight text-black leading-none">Live <span className="font-medium italic text-[#96968B]">Status</span></h2>
                   </div>
-                  <button onClick={() => setSelectedOrder(null)} className="h-10 w-10 flex items-center justify-center bg-[#FBFBFA] rounded-full text-gray-400 hover:text-black transition-all border border-gray-50"><X size={20} strokeWidth={1.5} /></button>
+                  <button onClick={() => setSelectedOrder(null)} className="h-12 w-12 flex items-center justify-center bg-[#FBFBFA] rounded-full text-[#333330]/40 hover:text-black transition-all border border-[#333330]/5 group">
+                    <X size={24} strokeWidth={1.5} className="group-hover:rotate-90 transition-transform duration-500" />
+                  </button>
                 </div>
                 
-                <div className="space-y-12 relative px-2">
-                  <div className="absolute left-[27px] top-4 bottom-4 w-px bg-gray-100" />
+                <div className="space-y-12 relative px-4">
+                  <div className="absolute left-[35px] top-4 bottom-4 w-[1.5px] bg-[#333330]/5" />
                   {statusMap.map((step, idx) => {
                     const isCompleted = getStatusIndex(selectedOrder.status) >= idx;
                     const Icon = step.icon;
                     return (
-                      <div key={step.key} className="relative flex gap-10">
-                        <div className={cn("h-8 w-8 rounded-full flex items-center justify-center z-10 transition-all duration-1000 border", isCompleted ? 'bg-black text-white border-black shadow-lg shadow-black/10' : 'bg-white text-gray-200 border-gray-100')}>
-                          <Icon size={14} strokeWidth={2} />
+                      <div key={step.key} className="relative flex gap-12">
+                        <div className={cn("h-10 w-10 rounded-full flex items-center justify-center z-10 transition-all duration-1000 border-2", isCompleted ? 'bg-black text-white border-black shadow-xl' : 'bg-white text-[#333330]/10 border-[#333330]/5')}>
+                          <Icon size={18} strokeWidth={1.5} />
                         </div>
-                        <div className="flex-1 pt-0.5">
-                          <h4 className={cn("text-[12px] font-bold uppercase tracking-widest", isCompleted ? 'text-black' : 'text-gray-300')}>{step.label}</h4>
-                          <p className={cn("text-[11px] font-medium mt-1 leading-relaxed", isCompleted ? 'text-gray-500' : 'text-gray-200')}>{step.desc}</p>
+                        <div className="flex-1 pt-1.5">
+                          <h4 className={cn("text-[13px] font-bold uppercase tracking-widest transition-colors duration-1000", isCompleted ? 'text-black' : 'text-[#333330]/20')}>{step.label}</h4>
+                          <p className={cn("text-[12px] font-light mt-1.5 leading-relaxed transition-colors duration-1000", isCompleted ? 'text-[#666660]' : 'text-[#333330]/10')}>{step.desc}</p>
                         </div>
                       </div>
                     );
                   })}
                 </div>
 
-                <button onClick={() => setSelectedOrder(null)} className="w-full mt-12 py-4 text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400 hover:text-black border-t border-gray-50 transition-all">Dismiss Tracking</button>
+                <button onClick={() => setSelectedOrder(null)} className="w-full mt-16 py-4 text-[10px] font-bold uppercase tracking-[0.4em] text-[#333330]/30 hover:text-black border-t border-[#333330]/5 transition-all">Dismiss Tracking</button>
               </motion.div>
             </>
           )}
         </AnimatePresence>
 
-        <div className="mt-24 pt-12 border-t border-gray-100 flex justify-center">
-          <Link to="/shop" className="group inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-gray-400 hover:text-black transition-all">
-            <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-            Continue Shopping
+        <div className="mt-24 pt-12 border-t border-[#333330]/5 flex justify-center">
+          <Link to="/shop" className="group inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.3em] text-[#333330]/40 hover:text-black transition-all">
+            <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform text-[#96968B]/40" />
+            Return to Collection
           </Link>
         </div>
       </div>

@@ -42,41 +42,58 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-white min-h-screen font-jakarta text-black overflow-x-hidden">
+    <div className="bg-[#F8F8F6] min-h-screen font-jakarta text-[#333330] overflow-x-hidden">
       <SEO 
-        title="Contact Us | Mike's Printer" 
-        description="Connect with Mike's Printer. Our dedicated team is here to provide expert assistance for all your printing needs."
+        title="Contact Us | Yankee's Printer" 
+        description="Connect with Yankee's Printer. Our dedicated team is here to provide expert assistance for all your printing needs."
       />
+
+      {/* --- BACKGROUND DESIGN --- */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Soft Organic Shape (Subtle) */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.3 }}
+          transition={{ duration: 4 }}
+          className="absolute -bottom-[10%] -right-[10%] w-[50%] h-[60%] bg-[#EFEFE9] rounded-full blur-[180px]"
+        />
+      </div>
       
-      {/* --- PREMIUM HERO HEADER --- */}
-      <section className="bg-[#FBFBFA] border-b border-gray-100 py-20 md:py-28 px-6 lg:px-12">
-        <div className="max-w-[1920px] mx-auto text-center space-y-6">
-          <motion.span 
+      {/* --- HERO HEADER --- */}
+      <section className="relative pt-24 pb-16 px-6 lg:px-20">
+        <div className="max-w-[1920px] mx-auto text-center space-y-8">
+          <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[11px] font-bold tracking-[0.4em] uppercase text-gray-400 block"
+            className="flex items-center justify-center gap-3"
           >
-            Concierge Support
-          </motion.span>
+            <span className="w-8 h-[1px] bg-[#96968B]"></span>
+            <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#333330]/40">Connect With Us</span>
+            <span className="w-8 h-[1px] bg-[#96968B]"></span>
+          </motion.div>
+          
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-light uppercase tracking-tight"
+            transition={{ delay: 0.2 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-light text-black uppercase tracking-tight leading-[1.1]"
           >
-            Get In <span className="font-semibold italic">Touch</span>
+            Get In <span className="font-medium italic text-[#96968B]">Touch</span>
           </motion.h1>
-          <motion.div 
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="w-20 h-[1px] bg-black mx-auto mt-8"
-          />
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-lg md:text-xl text-[#666660] font-light leading-relaxed max-w-2xl mx-auto"
+          >
+            Our dedicated specialists are available to provide tailored solutions for your printing requirements.
+          </motion.p>
         </div>
       </section>
 
       {/* --- MAIN CONTACT CONTENT --- */}
-      <section className="py-20 md:py-32 px-6 lg:px-12">
+      <section className="py-20 md:py-32 px-6 lg:px-20 relative z-10">
         <div className="max-w-[1920px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 xl:gap-32">
             
@@ -85,132 +102,142 @@ export default function Contact() {
               <div className="space-y-12">
                 <div className="space-y-4">
                   <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-black">Direct Assistance</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed font-medium">
-                    Our dedicated specialists are available to provide tailored solutions for your professional printing requirements.
-                  </p>
+                  <div className="w-12 h-[1.5px] bg-[#96968B]/30" />
                 </div>
 
-                <div className="space-y-10">
-                  <div className="group flex items-start gap-6">
-                    <div className="h-12 w-12 rounded-full bg-[#FBFBFA] flex items-center justify-center shrink-0 border border-gray-50 group-hover:bg-black group-hover:text-white transition-all duration-500">
+                <div className="space-y-12">
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="group flex items-start gap-6"
+                  >
+                    <div className="h-12 w-12 rounded-2xl bg-white flex items-center justify-center shrink-0 border border-[#333330]/5 group-hover:bg-[#333330] group-hover:text-white transition-all duration-500 shadow-sm">
                       <Mail size={18} strokeWidth={1.2} />
                     </div>
-                    <div className="space-y-1">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Email Us</p>
-                      <p className="text-base font-medium text-black">info@mikesprinter.shop</p>
+                    <div className="space-y-1 pt-1">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-[#96968B]">Email Us</p>
+                      <p className="text-base font-medium text-black">info@yankeesprinter.shop</p>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="group flex items-start gap-6">
-                    <div className="h-12 w-12 rounded-full bg-[#FBFBFA] flex items-center justify-center shrink-0 border border-gray-50 group-hover:bg-black group-hover:text-white transition-all duration-500">
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                    className="group flex items-start gap-6"
+                  >
+                    <div className="h-12 w-12 rounded-2xl bg-white flex items-center justify-center shrink-0 border border-[#333330]/5 group-hover:bg-[#333330] group-hover:text-white transition-all duration-500 shadow-sm">
                       <MapPin size={18} strokeWidth={1.2} />
                     </div>
-                    <div className="space-y-1">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Location</p>
+                    <div className="space-y-1 pt-1">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-[#96968B]">Location</p>
                       <p className="text-base font-medium text-black leading-relaxed">
-                        4100 University Ave, <br/> 
-                        West Des Moines, IA 50266, USA
+                        
+                        Saint Anthony Main Minneapolis, MN, USA
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>
 
-            {/* --- CONTACT FORM --- */}
+            {/* --- CONTACT FORM: GLASS CANVAS --- */}
             <div className="lg:col-span-8">
-              <div className="relative">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="relative bg-white/50 backdrop-blur-md rounded-[40px] md:rounded-[60px] p-8 md:p-16 lg:p-20 border border-[#333330]/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.03)]"
+              >
                 {status === 'success' ? (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    className="text-center py-24 bg-[#FBFBFA] rounded-sm border border-gray-50"
-                  >
-                    <div className="h-20 w-20 bg-white text-black rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl border border-gray-50">
+                  <div className="text-center py-12">
+                    <div className="h-20 w-20 bg-white text-[#96968B] rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl border border-[#333330]/5">
                       <CheckCircle2 size={32} strokeWidth={1} />
                     </div>
-                    <h2 className="text-2xl font-light uppercase tracking-widest mb-4 text-black">Message Received</h2>
-                    <p className="text-gray-500 mb-10 max-w-sm mx-auto font-medium">Thank you for connecting. A specialist will review your request and respond shortly.</p>
+                    <h2 className="text-3xl font-light uppercase tracking-tight mb-4 text-black">Message Received</h2>
+                    <p className="text-[#666660] mb-10 max-w-sm mx-auto font-light leading-relaxed">Thank you for connecting. A specialist will review your request and respond shortly.</p>
                     <button 
                       onClick={() => setStatus(null)} 
-                      className="text-[11px] font-bold uppercase tracking-[0.3em] border-b border-black pb-1 hover:text-gray-400 hover:border-gray-200 transition-all"
+                      className="text-[11px] font-bold uppercase tracking-[0.3em] text-black border-b border-black pb-1 hover:text-[#96968B] hover:border-[#96968B] transition-all"
                     >
                       Send Another Inquiry
                     </button>
-                  </motion.div>
+                  </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                      <div className="space-y-2 group">
-                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Full Name</label>
+                  <form onSubmit={handleSubmit} className="space-y-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-bold text-[#333330]/40 uppercase tracking-[0.2em] pl-1">Full Name</label>
                         <input 
-                          required type="text" placeholder="YOUR NAME" value={formData.name}
+                          required type="text" placeholder="ENTER YOUR NAME" value={formData.name}
                           onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          className="w-full h-14 bg-transparent border-b border-gray-100 focus:border-black outline-none text-[13px] font-medium transition-all placeholder:text-gray-200 uppercase tracking-widest"
+                          className="w-full h-14 bg-white border border-[#333330]/5 rounded-2xl px-6 focus:border-[#96968B] outline-none text-[13px] font-medium transition-all placeholder:text-[#333330]/10 uppercase tracking-widest"
                         />
                       </div>
-                      <div className="space-y-2 group">
-                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Email Address</label>
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-bold text-[#333330]/40 uppercase tracking-[0.2em] pl-1">Email Address</label>
                         <input 
-                          required type="email" placeholder="YOUR EMAIL" value={formData.email}
+                          required type="email" placeholder="ENTER YOUR EMAIL" value={formData.email}
                           onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="w-full h-14 bg-transparent border-b border-gray-100 focus:border-black outline-none text-[13px] font-medium transition-all placeholder:text-gray-200 uppercase tracking-widest"
+                          className="w-full h-14 bg-white border border-[#333330]/5 rounded-2xl px-6 focus:border-[#96968B] outline-none text-[13px] font-medium transition-all placeholder:text-[#333330]/10 uppercase tracking-widest"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                      <div className="space-y-2 group">
-                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Phone Number</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-bold text-[#333330]/40 uppercase tracking-[0.2em] pl-1">Phone Number</label>
                         <input 
                           type="tel" placeholder="OPTIONAL" value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full h-14 bg-transparent border-b border-gray-100 focus:border-black outline-none text-[13px] font-medium transition-all placeholder:text-gray-200 uppercase tracking-widest"
+                          className="w-full h-14 bg-white border border-[#333330]/5 rounded-2xl px-6 focus:border-[#96968B] outline-none text-[13px] font-medium transition-all placeholder:text-[#333330]/10 uppercase tracking-widest"
                         />
                       </div>
-                      <div className="space-y-2 group">
-                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Inquiry Type</label>
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-bold text-[#333330]/40 uppercase tracking-[0.2em] pl-1">Inquiry Type</label>
                         <div className="relative">
                           <select 
                             value={formData.subject}
                             onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                            className="w-full h-14 bg-transparent border-b border-gray-100 focus:border-black outline-none text-[13px] font-medium transition-all appearance-none cursor-pointer pr-12 uppercase tracking-widest"
+                            className="w-full h-14 bg-white border border-[#333330]/5 rounded-2xl px-6 focus:border-[#96968B] outline-none text-[13px] font-medium transition-all appearance-none cursor-pointer pr-12 uppercase tracking-widest"
                           >
                             <option>General Question</option>
                             <option>Printer Help</option>
                             <option>Order Status</option>
-                            <option>Technical Support</option>
+                            <option>Support</option>
                           </select>
-                          <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none" size={16} />
+                          <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 text-[#96968B] pointer-events-none" size={16} />
                         </div>
                       </div>
                     </div>
 
-                    <div className="space-y-2 group">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Message Details</label>
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-bold text-[#333330]/40 uppercase tracking-[0.2em] pl-1">Message Details</label>
                       <textarea 
                         required rows="4" placeholder="HOW CAN WE ASSIST YOU?" value={formData.message}
                         onChange={(e) => setFormData({...formData, message: e.target.value})}
-                        className="w-full py-4 bg-transparent border-b border-gray-100 focus:border-black outline-none text-[13px] font-medium transition-all resize-none placeholder:text-gray-200 uppercase tracking-widest"
+                        className="w-full py-6 bg-white border border-[#333330]/5 rounded-[32px] px-6 focus:border-[#96968B] outline-none text-[13px] font-medium transition-all resize-none placeholder:text-[#333330]/10 uppercase tracking-widest"
                       ></textarea>
                     </div>
 
                     <div className="pt-6">
                       <button 
                         disabled={loading}
-                        className="group relative inline-flex items-center gap-8 bg-black text-white h-16 px-12 rounded-full overflow-hidden transition-all duration-500 hover:pr-16 hover:shadow-2xl active:scale-95 disabled:opacity-50"
+                        className="group relative inline-flex items-center gap-8 bg-black text-white h-16 px-12 rounded-full overflow-hidden transition-all duration-500 hover:shadow-2xl active:scale-95 disabled:opacity-50"
                       >
                         <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.3em]">
                           {loading ? "Processing..." : "Send Message"}
                         </span>
                         {!loading && <ArrowRight size={18} className="relative z-10 transition-transform duration-500 group-hover:translate-x-2" />}
-                        <div className="absolute inset-0 bg-gray-800 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                        <div className="absolute inset-0 bg-[#333330] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                       </button>
                     </div>
                     {status === 'error' && <p className="text-red-500 text-[10px] font-bold uppercase tracking-widest mt-6">Transmission failure. Please try again.</p>}
                   </form>
                 )}
-              </div>
+              </motion.div>
             </div>
 
           </div>

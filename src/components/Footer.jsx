@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Loader2, MapPin, ArrowRight } from 'lucide-react';
+import { Mail, Loader2, MapPin, ArrowRight, Instagram, Twitter, Facebook } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import API_BASE_URL from '../config';
@@ -54,40 +54,40 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#FBFBFA] text-black pt-24 pb-12 font-jakarta border-t border-gray-100">
-      <div className="max-w-[1920px] mx-auto px-6 lg:px-12">
+    <footer className="bg-white text-[#333330] pt-24 pb-12 font-jakarta border-t border-[#333330]/5">
+      <div className="max-w-[1920px] mx-auto px-6 lg:px-20">
         
-        {/* --- MAIN GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 mb-24">
+        {/* --- MAIN LAYOUT --- */}
+        <div className="flex flex-col lg:flex-row justify-between gap-20 mb-24">
           
-          {/* Brand Column */}
-          <div className="lg:col-span-4 space-y-10">
+          {/* Brand & Mission Section */}
+          <div className="max-w-md space-y-10">
             <Link to="/" className="inline-block transition-opacity hover:opacity-80">
-              <img src="/logo/logo.png" alt="Mike's Printer" className="h-10 md:h-15 w-auto object-contain" />
+              <img src="/logo/logo.png" alt="Yankee's Printer" className="h-10 md:h-12 w-auto object-contain" />
             </Link>
-            <p className="text-gray-500 text-sm md:text-base font-medium leading-relaxed max-w-sm">
-              Premium printers and high-quality hardware for every need. Providing reliable printing solutions for homes and businesses across the country.
+            <p className="text-[#666660] text-[15px] font-light leading-relaxed">
+              We specialize in providing high-performance printing hardware tailored for both creative professionals and home offices. Quality and reliability are at the core of everything we do.
             </p>
-            <div className="space-y-4">
-              <div className="flex items-start gap-4 group">
-                <MapPin size={18} className="text-black shrink-0 mt-1" strokeWidth={1.5} />
-                <p className="text-sm font-medium text-gray-600 leading-tight">4100 University Ave, West Des Moines, <br />IA 50266, USA</p>
+            <div className="space-y-4 pt-2">
+              <div className="flex items-center gap-4 group cursor-default">
+                <MapPin size={18} className="text-[#96968B] shrink-0" strokeWidth={1.2} />
+                <p className="text-[13px] font-medium text-[#333330] leading-tight">Saint Anthony Main Minneapolis, MN, USA</p>
               </div>
-              <div className="flex items-center gap-4 group">
-                <Mail size={18} className="text-black shrink-0" strokeWidth={1.5} />
-                <p className="text-sm font-medium text-gray-600">info@mikesprinter.shop</p>
+              <div className="flex items-center gap-4 group cursor-default">
+                <Mail size={18} className="text-[#96968B] shrink-0" strokeWidth={1.2} />
+                <p className="text-[13px] font-medium text-[#333330]">info@yankeesprinter.shop</p>
               </div>
             </div>
           </div>
 
-          {/* Links Columns */}
-          <div className="lg:col-span-5 grid grid-cols-2 md:grid-cols-3 gap-8">
+          {/* Links Section */}
+          <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-12 lg:pl-20">
             <div className="space-y-8">
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.3em] text-black">Collections</h4>
+              <h4 className="text-[13px] font-bold text-[#1A1A1A]">Shop Collections</h4>
               <ul className="space-y-4">
                 {categories.map(cat => (
                   <li key={cat.id}>
-                    <Link to={`/shop?category=${cat.slug}`} className="text-gray-500 hover:text-black transition-colors text-[13px] font-medium">
+                    <Link to={`/shop?category=${cat.slug}`} className="text-[#666660] hover:text-[#96968B] transition-colors text-[14px] font-light">
                       {cat.name}
                     </Link>
                   </li>
@@ -96,16 +96,16 @@ export default function Footer() {
             </div>
 
             <div className="space-y-8">
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.3em] text-black">Support</h4>
+              <h4 className="text-[13px] font-bold text-[#1A1A1A]">Company</h4>
               <ul className="space-y-4">
                 {[
                   { name: 'About Us', path: '/about' },
                   { name: 'Contact Us', path: '/contact' },
-                  { name: 'Track Orders', path: '/orders' },
-                  { name: 'FAQs', path: '/faq' }
+                  { name: 'FAQs', path: '/faq' },
+                  { name: 'Track Orders', path: '/orders' }
                 ].map(item => (
                   <li key={item.name}>
-                    <Link to={item.path} className="text-gray-500 hover:text-black transition-colors text-[13px] font-medium">
+                    <Link to={item.path} className="text-[#666660] hover:text-[#96968B] transition-colors text-[14px] font-light">
                       {item.name}
                     </Link>
                   </li>
@@ -114,7 +114,7 @@ export default function Footer() {
             </div>
 
             <div className="space-y-8">
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.3em] text-black">Policies</h4>
+              <h4 className="text-[13px] font-bold text-[#1A1A1A]">Legal Policies</h4>
               <ul className="space-y-4">
                 {[
                   { name: 'Privacy Policy', path: '/privacy-policy' },
@@ -124,7 +124,7 @@ export default function Footer() {
                   { name: 'Cookie Policy', path: '/cookie-policy' }
                 ].map(item => (
                   <li key={item.name}>
-                    <Link to={item.path} className="text-gray-500 hover:text-black transition-colors text-[13px] font-medium">
+                    <Link to={item.path} className="text-[#666660] hover:text-[#96968B] transition-colors text-[14px] font-light">
                       {item.name}
                     </Link>
                   </li>
@@ -132,44 +132,44 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-
-          {/* Newsletter Column */}
-          <div className="lg:col-span-3 space-y-10">
-            <div className="space-y-6">
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.3em] text-black">Stay Updated</h4>
-              <p className="text-xs text-gray-400 font-medium tracking-wide">Subscribe to receive the latest updates and exclusive offers.</p>
-              <form onSubmit={handleSubscribe} className="relative group">
-                <input
-                  required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                  placeholder="EMAIL ADDRESS"
-                  className="w-full bg-transparent border-b border-gray-200 py-4 pr-12 text-[11px] font-bold tracking-[0.2em] text-black focus:outline-none focus:border-black transition-all placeholder:text-gray-300"
-                />
-                <button
-                  disabled={loading}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 h-10 w-10 flex items-center justify-end text-black hover:scale-110 transition-transform"
-                >
-                  {loading ? <Loader2 className="animate-spin" size={16} /> : <ArrowRight size={20} strokeWidth={1.2} />}
-                </button>
-              </form>
-            </div>
-          </div>
         </div>
 
-        {/* --- BOTTOM BAR --- */}
-        <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">
-            © 2026 Mike's Printer. ALL RIGHTS RESERVED.
+        {/* --- NEWSLETTER BAR --- */}
+        <div className="bg-[#FBFBFA] rounded-[30px] p-8 md:p-12 mb-20 flex flex-col md:flex-row items-center justify-between gap-8 border border-[#333330]/5">
+          <div className="space-y-2 text-center md:text-left">
+            <h3 className="text-lg font-medium text-[#1A1A1A]">Subscribe to our newsletter</h3>
+            <p className="text-sm text-[#666660] font-light">Stay updated with our latest releases and exclusive offers.</p>
+          </div>
+          <form onSubmit={handleSubscribe} className="w-full md:w-auto flex items-center gap-4">
+            <input
+              required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your email address"
+              className="w-full md:w-80 bg-white border border-[#333330]/10 rounded-full px-6 py-3.5 text-sm outline-none focus:border-[#96968B] transition-all"
+            />
+            <button
+              disabled={loading}
+              className="h-12 w-12 bg-[#333330] text-white rounded-full flex items-center justify-center hover:bg-black transition-all shadow-lg shrink-0"
+            >
+              {loading ? <Loader2 className="animate-spin" size={18} /> : <ArrowRight size={20} strokeWidth={1.5} />}
+            </button>
+          </form>
+        </div>
+
+        {/* --- BOTTOM SECTION --- */}
+        <div className="pt-10 border-t border-[#333330]/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-[13px] text-[#666660] font-light">
+            © 2026 Yankee's Printer. All rights reserved.
           </p>
           
-          <div className="flex items-center gap-10 grayscale opacity-40 hover:opacity-100 transition-opacity duration-500">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-5" />
+          <div className="flex items-center gap-8 grayscale opacity-40">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4" />
           </div>
         </div>
 
         {/* --- DISCLAIMER --- */}
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center opacity-30">
           <p className="text-gray-600 text-[9px] font-bold uppercase tracking-[0.3em] leading-loose">
-          Disclaimer - For Informational only. No software installation or distribution.
+            Disclaimer - For Informational only. No software installation or distribution.
           </p>
         </div>
       </div>

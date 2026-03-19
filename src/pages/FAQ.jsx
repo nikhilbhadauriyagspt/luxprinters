@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import SEO from '@/components/SEO';
-import { ChevronDown, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronDown, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
 
 const faqs = [
@@ -64,88 +65,106 @@ export default function FAQ() {
   const filteredFaqs = faqs.find(f => f.category === activeCategory)?.questions || [];
 
   return (
-    <div className="bg-white min-h-screen font-jakarta text-black">
+    <div className="bg-[#F8F8F6] min-h-screen font-jakarta text-[#333330] overflow-x-hidden">
       <SEO 
-        title="FAQ | Mike's Printer" 
+        title="FAQ | Yankee's Printer" 
         description="Find simple answers to your questions about printers, delivery, and support."
       />
 
-      {/* --- PREMIUM HERO HEADER --- */}
-      <section className="bg-[#FBFBFA] border-b border-gray-100 py-20 md:py-28 px-6 lg:px-12">
-        <div className="max-w-[1920px] mx-auto text-center space-y-6">
-          <span className="text-[11px] font-bold tracking-[0.4em] uppercase text-gray-400 block">Help Center</span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light uppercase tracking-tight">
-            How can we <span className="font-semibold italic text-black/80">Help?</span>
-          </h1>
-          <div className="w-20 h-[1px] bg-black mx-auto mt-8" />
+      {/* --- REFINED HERO HEADER --- */}
+      <section className="relative pt-24 pb-16 px-6 lg:px-20 text-center">
+        <div className="max-w-[1920px] mx-auto space-y-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center justify-center gap-3"
+          >
+            <span className="w-8 h-[1px] bg-[#96968B]"></span>
+            <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#333330]/40">Help Center</span>
+            <span className="w-8 h-[1px] bg-[#96968B]"></span>
+          </motion.div>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-light text-black uppercase tracking-tight leading-[1.1]"
+          >
+            How can we <span className="font-medium italic text-[#96968B]">Help?</span>
+          </motion.h1>
         </div>
       </section>
 
       {/* --- MAIN CONTENT --- */}
-      <div className="max-w-[1920px] mx-auto px-6 lg:px-12 py-20 md:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
+      <div className="max-w-[1200px] mx-auto px-6 py-12 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* --- CATEGORY NAVIGATION --- */}
-          <div className="lg:col-span-4 space-y-8">
-            <h4 className="text-[11px] font-bold uppercase tracking-[0.3em] text-black border-b border-gray-100 pb-4">Categories</h4>
+          <div className="lg:col-span-4 space-y-6">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#96968B] border-b border-[#333330]/5 pb-4">Collections</h4>
             <div className="flex lg:flex-col gap-2 overflow-x-auto pb-4 lg:pb-0 no-scrollbar">
               {faqs.map((f) => (
                 <button
                   key={f.category}
                   onClick={() => { setActiveCategory(f.category); setActiveIdx(null); }}
                   className={cn(
-                    "px-6 py-4 text-[12px] font-bold transition-all whitespace-nowrap text-left flex items-center justify-between rounded-sm",
+                    "px-6 py-3.5 text-[12px] font-bold transition-all whitespace-nowrap text-left rounded-xl uppercase tracking-wider",
                     activeCategory === f.category 
-                      ? "bg-gray-100 text-black border border-gray-200" 
-                      : "bg-[#FBFBFA] text-gray-500 hover:bg-gray-100 hover:text-black"
+                      ? "bg-black text-white shadow-lg" 
+                      : "bg-white text-[#333330]/40 hover:bg-white hover:text-black border border-[#333330]/5"
                   )}
                 >
-                  <span className="uppercase tracking-[0.1em]">{f.category}</span>
-                  <ChevronRight size={16} strokeWidth={1.5} className={cn("transition-transform duration-300", activeCategory === f.category ? "opacity-100" : "opacity-0")} />
+                  {f.category}
                 </button>
               ))}
             </div>
           </div>
 
           {/* --- ACCORDION PANEL --- */}
-          <div className="lg:col-span-8 space-y-6">
+          <div className="lg:col-span-8">
             <div className="space-y-4">
               {filteredFaqs.map((faq, i) => (
                 <div 
                   key={i}
                   className={cn(
-                    "bg-white border-b transition-all duration-500 overflow-hidden",
-                    activeIdx === i ? "border-black" : "border-gray-100 hover:border-gray-300"
+                    "bg-white rounded-2xl transition-all duration-500 overflow-hidden border border-[#333330]/5 shadow-sm",
+                    activeIdx === i ? "shadow-md" : "hover:border-[#333330]/10"
                   )}
                 >
                   <button
                     onClick={() => toggle(i)}
-                    className="w-full flex items-center justify-between py-6 text-left group"
+                    className="w-full flex items-center justify-between p-6 text-left group"
                   >
                     <span className={cn(
-                      "text-base md:text-lg font-semibold transition-colors leading-tight pr-8",
-                      activeIdx === i ? "text-black" : "text-gray-800 group-hover:text-black"
+                      "text-[15px] font-medium transition-colors leading-snug pr-8",
+                      activeIdx === i ? "text-black" : "text-[#333330] group-hover:text-black"
                     )}>
                       {faq.q}
                     </span>
                     <div className={cn(
-                      "h-8 w-8 rounded-full border flex items-center justify-center transition-all duration-500 shrink-0",
-                      activeIdx === i ? "border-black bg-white text-black rotate-180" : "border-gray-200 bg-white text-black group-hover:border-black"
+                      "h-8 w-8 rounded-full border border-[#333330]/5 flex items-center justify-center transition-all duration-500 shrink-0",
+                      activeIdx === i ? "bg-[#333330] text-white rotate-180" : "bg-[#FBFBFA] text-[#333330]/40 group-hover:border-[#333330]/20"
                     )}>
                       <ChevronDown size={16} strokeWidth={1.5} />
                     </div>
                   </button>
 
-                  <div className={cn(
-                    "overflow-hidden transition-all duration-300",
-                    activeIdx === i ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-                  )}>
-                    <div className="pb-8 pr-12">
-                      <p className="text-gray-500 text-sm md:text-base font-medium leading-relaxed">
-                        {faq.a}
-                      </p>
-                    </div>
-                  </div>
+                  <AnimatePresence>
+                    {activeIdx === i && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="px-6 pb-6 border-t border-[#333330]/5 pt-6">
+                          <p className="text-[#666660] text-sm md:text-base font-light leading-relaxed">
+                            {faq.a}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
             </div>
@@ -155,17 +174,17 @@ export default function FAQ() {
       </div>
 
       {/* --- CTA SECTION --- */}
-      <section className="py-24 px-6 lg:px-12 bg-[#FBFBFA] border-t border-gray-100 text-center">
+      <section className="py-24 px-6 text-center">
         <div className="max-w-2xl mx-auto space-y-10">
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-5xl font-light uppercase tracking-tight text-black">Still Need <span className="font-semibold italic text-black/80">Help?</span></h2>
-            <p className="text-gray-500 text-base font-medium">If you couldn't find your answer here, our team is always ready to talk.</p>
+            <h2 className="text-3xl md:text-4xl font-light uppercase tracking-tight text-black">
+              Still Need <span className="font-medium italic text-[#96968B]">Answers?</span>
+            </h2>
+            <p className="text-[#666660] text-base font-light">Our team is always available to provide the clarity you need.</p>
           </div>
-          <div className="pt-4 flex justify-center">
-            <Link to="/contact" className="group relative inline-flex items-center gap-6 bg-black text-white h-16 px-12 rounded-full overflow-hidden transition-all duration-500 hover:shadow-2xl active:scale-95">
-              <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.3em]">Talk To Us</span>
-              <ArrowRight size={18} className="relative z-10 transition-transform duration-500 group-hover:translate-x-2" />
-              <div className="absolute inset-0 bg-gray-800 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+          <div className="flex justify-center gap-6">
+            <Link to="/contact" className="bg-black text-white px-10 h-14 flex items-center justify-center rounded-full font-bold text-[10px] uppercase tracking-[0.2em] transition-all hover:bg-[#333330] shadow-xl active:scale-95">
+              Speak with us
             </Link>
           </div>
         </div>
